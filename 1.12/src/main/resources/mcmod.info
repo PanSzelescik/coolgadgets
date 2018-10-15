@@ -1,0 +1,17 @@
+[
+	{
+		"modid": "coolgadgets",
+		"name": "Cool Gadgets",
+		"description": "This mod adds a few gadgets",
+		"version": "${version}",
+		"credits": "",
+		"logoFile": "",
+		"mcversion": "1.12.2",
+		"url": "https://minecraft.curseforge.com/projects/morelibs",
+		"updateUrl": "",
+		"authorList": ["PanSzelescik"],
+		"parent": "",
+		"screenshots": [],
+		"dependencies": []
+	}
+]

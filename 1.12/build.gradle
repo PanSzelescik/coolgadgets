@@ -1,0 +1,78 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+		maven { url = "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.1.0"
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.matthewprenger.cursegradle'
+
+version = "${mod_version}"
+group = "${mod_group}"
+archivesBaseName = "${modid}-${version_minecraft}"
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+jar {
+	exclude 'crazypants/**'
+	exclude 'buildcraft/**'
+	exclude 'mekanism/**'
+	exclude 'appeng/**'
+	exclude 'cofh/**'
+}
+
+minecraft {
+    version = "${version_minecraft}-${version_forge}"
+    runDir = "run"
+    mappings = "${version_mcp}"
+    makeObfSourceJar = false
+    
+    replaceIn "CoolGadgets.java"
+    replace "@version@", project.version
+}
+
+repositories {
+	maven { url = "http://maven.covers1624.net" }
+	maven { url = "https://mod-buildcraft.com/maven" }
+	maven { url = "http://maven.thiakil.com/" }
+	maven { url = "https://modmaven.k-4u.nl" }
+}
+
+dependencies {
+	compile "appeng:appliedenergistics2:rv6-stable-2:api"
+	compile "com.mod-buildcraft:buildcraft-api:${version_buildcraft}"
+	compile "mekanism:Mekanism:${version_mekanism}:api"
+	compile "cofh:CoFHCore:${version_cofh_core}:deobf"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+curseforge {
+	apiKey = ''
+	project {
+		id = '304920'
+		releaseType = 'release'
+		changelog = 'https://github.com/PanSzelescik/coolgadgets/blob/master/CHANGELOG.md'
+	}
+}
