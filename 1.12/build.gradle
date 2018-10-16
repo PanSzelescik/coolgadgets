@@ -21,14 +21,6 @@ compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
 }
 
-jar {
-	exclude 'crazypants/**'
-	exclude 'buildcraft/**'
-	exclude 'mekanism/**'
-	exclude 'appeng/**'
-	exclude 'cofh/**'
-}
-
 minecraft {
     version = "${version_minecraft}-${version_forge}"
     runDir = "run"
@@ -51,6 +43,7 @@ dependencies {
 	compile "com.mod-buildcraft:buildcraft-api:${version_buildcraft}"
 	compile "mekanism:Mekanism:${version_mekanism}:api"
 	compile "cofh:CoFHCore:${version_cofh_core}:deobf"
+	compile "li.cil.oc:OpenComputers:MC${version_opencomputers}:api"
 }
 
 processResources {

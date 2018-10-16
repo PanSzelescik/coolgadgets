@@ -24,7 +24,9 @@ public class CoolGadgets {
 			+ "after:cofhcore;"
 			+ "after:enderio;"
 			+ "after:immersiveengineering;"
-			+ "after:mekanism";
+			+ "after:mekanism;"
+			+ "after:opencomputers;"
+			+ "after:projectred-core";
 	
 	public static Item superWrench;
 	
