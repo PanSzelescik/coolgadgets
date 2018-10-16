@@ -1,7 +1,6 @@
 package panszelescik.coolgadgets;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -23,12 +22,17 @@ public class CoolGadgets {
 			+ "after:buildcraftcore;"
 			+ "after:cofhcore;"
 			+ "after:enderio;"
+			+ "after:extrautils2;"
+			+ "after:hammercore;"
 			+ "after:immersiveengineering;"
 			+ "after:mekanism;"
 			+ "after:opencomputers;"
-			+ "after:projectred-core";
+			+ "after:projectred-core;"
+			+ "after:reborncore";
 	
-	public static Item superWrench;
+	@Mod.Instance(MODID)
+	public static CoolGadgets instance;
+	public static ItemSuperWrench superWrench;
 	
 	public static final CreativeTabs TAB = new CreativeTabs(MODID) {
 		@Override

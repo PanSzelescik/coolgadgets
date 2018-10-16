@@ -2,11 +2,15 @@ package panszelescik.coolgadgets.items;
 
 import static panszelescik.coolgadgets.CoolGadgets.*;
 
+import com.rwtema.extrautils2.api.tools.IWrench;
+import com.zeitheron.hammercore.utils.wrench.IWrenchItem;
+
 import appeng.api.implementations.items.IAEWrench;
 import blusunrize.immersiveengineering.api.tool.ITool;
 import buildcraft.api.tools.IToolWrench;
 import cofh.api.item.IToolHammer;
 import crazypants.enderio.api.tool.IConduitControl;
+//import ic2.core.item.tool.ItemToolWrench;
 import li.cil.oc.api.internal.Wrench;
 import mekanism.api.IMekWrench;
 import mrtjp.projectred.api.IScrewdriver;
@@ -14,6 +18,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -24,6 +29,7 @@ import net.minecraftforge.fml.common.Optional.Interface;
 import net.minecraftforge.fml.common.Optional.InterfaceList;
 import net.minecraftforge.fml.common.Optional.Method;
 import panszelescik.morelibs.api.ItemBase;
+import reborncore.api.IToolHandler;
 
 @InterfaceList({
 	@Interface(iface = "appeng.api.implementations.items.IAEWrench", modid = "appliedenergistics2"),
@@ -31,12 +37,19 @@ import panszelescik.morelibs.api.ItemBase;
 	@Interface(iface = "cofh.api.item.IToolHammer", modid = "cofhcore"),
 	@Interface(iface = "crazypants.enderio.api.tool.IConduitControl", modid = "enderio"),
 	@Interface(iface = "crazypants.enderio.api.tool.ITool", modid = "enderio"),
+	@Interface(iface = "com.rwtema.extrautils2.api.tools.IWrench", modid = "extrautils2"),
+	@Interface(iface = "com.zeitheron.hammercore.utils.wrench.IWrenchItem", modid = "hammercore"),
 	@Interface(iface = "blusunrize.immersiveengineering.api.tool.ITool", modid = "immersiveengineering"),
 	@Interface(iface = "mekanism.api.IMekWrench", modid = "mekanism"),
 	@Interface(iface = "li.cil.oc.api.internal.Wrench", modid = "opencomputers"),
-	@Interface(iface = "mrtjp.projectred.api.IScrewdriver", modid = "projectred-core")
+	@Interface(iface = "mrtjp.projectred.api.IScrewdriver", modid = "projectred-core"),
+	@Interface(iface = "reborncore.api.IToolHandler", modid = "reborncore")
 })
-public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench, IConduitControl, crazypants.enderio.api.tool.ITool, IToolHammer, IMekWrench, ITool, Wrench, IScrewdriver {
+public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench, IToolHammer, IConduitControl, crazypants.enderio.api.tool.ITool, IWrench, IWrenchItem, ITool, IMekWrench, Wrench, IScrewdriver, IToolHandler {
+	
+	private ItemStack scmScrewdriver = null;
+	private ItemStack laserWrench = null;
+	private ItemStack rsWrench = null;
 	
 	public ItemSuperWrench() {
 		super(TAB);
@@ -44,6 +57,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 		setRegistryName(new ResourceLocation(MODID, "superwrench"));
 		setHarvestLevel("wrench", 1);
 		setMaxStackSize(1);
+		setContainerItem(this);
 	}
 	
 	@Override
@@ -60,6 +74,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	@Method(modid = "appliedenergistics2")
 	@Override
 	public boolean canWrench(ItemStack arg0, EntityPlayer arg1, BlockPos arg2) {
+		arg1.swingArm(EnumHand.MAIN_HAND);
 		return true;
 	}
 	
@@ -127,6 +142,19 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 		arg1.swingArm(arg0);
 	}
 	
+	/* IWrenchItem */
+	@Method(modid = "hammercore")
+	@Override
+	public boolean canWrench(ItemStack arg0) {
+		return true;
+	}
+	
+	@Method(modid = "hammercore")
+	@Override
+	public void onWrenchUsed(EntityPlayer arg0, BlockPos arg1, EnumHand arg2) {
+		arg0.swingArm(arg2);
+	}
+	
 	/* ITool - Immersive Engineering*/
 	@Method(modid = "immersiveengineering")
 	@Override
@@ -159,5 +187,13 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	@Override
 	public void damageScrewdriver(EntityPlayer arg0, ItemStack arg1) {
 		arg0.swingArm(EnumHand.MAIN_HAND);
+	}
+	
+	/* IToolHandler */
+	@Method(modid = "reborncore")
+	@Override
+	public boolean handleTool(ItemStack stack, BlockPos pos, World world, EntityPlayer player, EnumFacing side, boolean damage) {
+		player.swingArm(EnumHand.MAIN_HAND);
+		return true;
 	}
 }
