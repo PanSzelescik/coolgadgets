@@ -69,5 +69,8 @@ curseforge {
 		id = '304920'
 		releaseType = 'release'
 		changelog = 'https://github.com/PanSzelescik/coolgadgets/blob/master/CHANGELOG.md'
+		relations {
+			requiredDependency 'morelibs'
+		}
 	}
 }
