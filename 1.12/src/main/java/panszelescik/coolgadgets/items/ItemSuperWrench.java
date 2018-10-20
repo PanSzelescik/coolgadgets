@@ -42,6 +42,7 @@ import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import panszelescik.coolgadgets.helper.IC2WrenchHelper;
+import panszelescik.coolgadgets.helper.RSWrenchHelper;
 import panszelescik.morelibs.api.BlockHelper;
 import panszelescik.morelibs.api.Helper;
 import panszelescik.morelibs.api.ItemBase;
@@ -118,8 +119,15 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 					IC2WrenchHelper.wrenchBlock(world, pos, side, player);
 					return EnumActionResult.SUCCESS;
 				}
-			}
-			catch (Exception e) {}
+			} catch (Exception e) {}
+		}
+		if (Helper.isLoaded("refinedstorage")) {
+			try {
+				if (block.getRegistryName().toString().startsWith("refinedstorage:")) {
+					player.swingArm(hand);
+					RSWrenchHelper.wrenchBlock(player, world, pos, hand, side, hitX, hitY, hitZ);
+				}
+			} catch (Exception e) {}
 		}
 		return EnumActionResult.PASS;
 	}

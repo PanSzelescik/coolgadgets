@@ -27,11 +27,13 @@ public class CoolGadgets {
 			+ "after:enderio;"
 			+ "after:extrautils2;"
 			+ "after:hammercore;"
+			+ "after:ic2@[2.8.101-ex112,);"
 			+ "after:immersiveengineering;"
 			+ "after:mekanism;"
 			+ "after:opencomputers;"
 			+ "after:projectred-core;"
-			+ "after:reborncore";
+			+ "after:reborncore;"
+			+ "after:refinedstorage@[1.6.8,)";
 	
 	@Mod.Instance(MODID)
 	public static CoolGadgets instance;

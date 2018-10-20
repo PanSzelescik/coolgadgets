@@ -35,6 +35,7 @@ repositories {
 	maven { url = "http://maven.covers1624.net" }
 	maven { url = "https://mod-buildcraft.com/maven" }
 	maven { url = "http://maven.thiakil.com/" }
+	maven { url = "https://repo.raoulvdberge.com" }
 	maven { url = "https://modmaven.k-4u.nl" }
 }
 
@@ -46,6 +47,7 @@ dependencies {
 	compile "li.cil.oc:OpenComputers:MC${version_opencomputers}:api"
 	compile "RebornCore:RebornCore-${version_reborncore}:api"
 	compile "net.industrial-craft:industrialcraft-2:${version_ic2}:dev"
+	compile "refinedstorage:refinedstorage:1.6.8+"
 }
 
 processResources {
