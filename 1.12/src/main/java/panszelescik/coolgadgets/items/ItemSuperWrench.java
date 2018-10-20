@@ -2,6 +2,10 @@ package panszelescik.coolgadgets.items;
 
 import static panszelescik.coolgadgets.CoolGadgets.*;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.rwtema.extrautils2.api.tools.IWrench;
 import com.zeitheron.hammercore.utils.wrench.IWrenchItem;
 
@@ -16,6 +20,7 @@ import mekanism.api.IMekWrench;
 import mrtjp.projectred.api.IScrewdriver;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,7 +40,10 @@ import net.minecraftforge.fml.common.Optional.Interface;
 import net.minecraftforge.fml.common.Optional.InterfaceList;
 import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import panszelescik.morelibs.api.BlockHelper;
+import panszelescik.morelibs.api.Helper;
 import panszelescik.morelibs.api.ItemBase;
 import panszelescik.morelibs.api.ServerHelper;
 import reborncore.api.IToolHandler;
@@ -73,6 +81,12 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	@Override
 	public boolean isFull3D() {
 		return true;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		tooltip.add(Helper.translate(getTranslationKey() + ".tooltip"));
 	}
 	
 	@Override
