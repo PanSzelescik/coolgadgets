@@ -14,7 +14,6 @@ import blusunrize.immersiveengineering.api.tool.ITool;
 import buildcraft.api.tools.IToolWrench;
 import cofh.api.item.IToolHammer;
 import crazypants.enderio.api.tool.IConduitControl;
-//import ic2.core.item.tool.ItemToolWrench;
 import li.cil.oc.api.internal.Wrench;
 import mekanism.api.IMekWrench;
 import mrtjp.projectred.api.IScrewdriver;
@@ -42,6 +41,7 @@ import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import panszelescik.coolgadgets.helper.IC2WrenchHelper;
 import panszelescik.morelibs.api.BlockHelper;
 import panszelescik.morelibs.api.Helper;
 import panszelescik.morelibs.api.ItemBase;
@@ -107,6 +107,19 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 		} else if (!player.isSneaking() && block.rotateBlock(world, pos, side)) {
 			player.swingArm(hand);
 			return ServerHelper.isServerWorld(world) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
+		}
+		if (Helper.isLoaded("ic2")) {
+			try {
+				if (block.getRegistryName().toString().startsWith("ic2:")) {
+					if (ServerHelper.isClientWorld(world)) {
+						player.swingArm(hand);
+						return EnumActionResult.PASS;
+					}
+					IC2WrenchHelper.wrenchBlock(world, pos, side, player);
+					return EnumActionResult.SUCCESS;
+				}
+			}
+			catch (Exception e) {}
 		}
 		return EnumActionResult.PASS;
 	}

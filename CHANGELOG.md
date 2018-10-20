@@ -1,6 +1,7 @@
 # More Libs Changelog
 
 ### 1.12.2-1.0.1
+- IC2 Wrench support
 - Added tooltips
 
 ### 1.12.2-1.0.0

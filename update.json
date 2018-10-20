@@ -5,7 +5,7 @@
 		"1.12.2-recommended": "1.0.0"
 	},
 	"1.12.2": {
-		"1.0.1": "Added tooltips",
+		"1.0.1": "IC2 Wrench support\nAdded tooltips",
 		"1.0.0": "Requires More Libs 1.0.2+\nFirst version with Calculator and Super Wrench!"
 	}
 }
