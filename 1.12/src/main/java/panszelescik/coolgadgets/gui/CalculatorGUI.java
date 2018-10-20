@@ -47,13 +47,13 @@ public class CalculatorGUI extends GuiScreen {
         int i = 0;
         for (int yi = 0; yi < numButtonsY; yi++) {
         	for (int xi = 0; xi < numButtonsX; xi++) {
-        		this.buttonList.add(new GuiImageButton(i, offsetX + sizeX*xi, offsetY + sizeY*yi, sizeX - 2, sizeY - 2, new ResourceLocation[]{new ResourceLocation(MODID, button)}, calcSigns1.get(i).toString()));
+        		this.buttonList.add(new GuiImageButton(i, offsetX + sizeX * xi, offsetY + sizeY * yi, sizeX - 2, sizeY - 2, new ResourceLocation[]{new ResourceLocation(MODID, button)}, calcSigns1.get(i).toString()));
         		i++;
         	}
         }
         this.buttonList.add(new GuiImageButton(16, offsetX, offsetY * 3, (offsetX * 2) - 2 , sizeY - 2, new ResourceLocation[]{new ResourceLocation(MODID, button)}, "="));
 		
-		text = new GuiTextField(16, Minecraft.getMinecraft().fontRenderer, offsetX, offsetY - sizeY, (offsetX * 2) - 2, sizeY - 2);
+		text = new GuiTextField(17, Minecraft.getMinecraft().fontRenderer, offsetX, offsetY - sizeY, (offsetX * 2) - 2, sizeY - 2);
 		text.setText(defaultText);
 		firstTyped = true;
 	}
@@ -80,7 +80,7 @@ public class CalculatorGUI extends GuiScreen {
 		if (key.equals("C")) {
 			text.setText(defaultText);
 			firstTyped = true;
-		} else if(key.equals("=")) {
+		} else if (key.equals("=")) {
 			try {
 				text.setText(String.valueOf(MathHelper.eval(text.getText())));
 			} catch (RuntimeException e) {

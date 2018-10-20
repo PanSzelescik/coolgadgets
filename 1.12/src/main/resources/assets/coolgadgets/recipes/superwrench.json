@@ -1,0 +1,19 @@
+{
+	"result": {
+		"item": "coolgadgets:superwrench"
+	},
+	"pattern": [
+		" I ",
+		" DI",
+		"D  "
+	],
+	"type": "forge:ore_shaped",
+	"key": {
+		"I": {
+			"item": "#IRON"
+		},
+		"D": {
+			"item": "#DIAMOND"
+		}
+	}
+}

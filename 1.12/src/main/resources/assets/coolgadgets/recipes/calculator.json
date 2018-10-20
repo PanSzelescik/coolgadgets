@@ -1,0 +1,22 @@
+{
+	"result": {
+		"item": "coolgadgets:calculator"
+	},
+	"pattern": [
+		"III",
+		"BRB",
+		"BBB"
+	],
+	"type": "forge:ore_shaped",
+	"key": {
+		"I": {
+			"item": "#IRON"
+		},
+		"B": {
+			"item": "#BUTTON"
+		},
+		"R": {
+			"item": "#REDSTONE"
+		}
+	}
+}

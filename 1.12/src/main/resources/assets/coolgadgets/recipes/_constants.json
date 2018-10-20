@@ -1,0 +1,41 @@
+[
+{
+	"name": "BUTTON",
+	"ingredient": [
+		{
+			"item": "minecraft:stone_button"
+		}
+	]
+},
+{
+	"name": "DIAMOND",
+	"ingredient": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "gemDiamond"
+		},
+		{
+			"type": "forge:ore_dict",
+			"ore": "stickDiamond"
+		}
+	]
+},
+{
+	"name": "IRON",
+	"ingredient": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "ingotIron"
+		}
+	]
+},
+{
+	"name": "REDSTONE",
+	"ingredient": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustRedstone"
+		}
+	]
+}
+]

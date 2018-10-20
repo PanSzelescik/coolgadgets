@@ -50,6 +50,7 @@ public class CoolGadgets {
 	public void preInit(FMLPreInitializationEvent event) {
 		calculator = new ItemCalculator();
 		superWrench = new ItemSuperWrench();
+		
 		ForgeRegistries.ITEMS.registerAll(calculator, superWrench);
 	}
 }
