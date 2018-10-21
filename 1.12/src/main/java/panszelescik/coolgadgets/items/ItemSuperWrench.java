@@ -124,8 +124,11 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 		if (Helper.isLoaded("refinedstorage")) {
 			try {
 				if (block.getRegistryName().toString().startsWith("refinedstorage:")) {
-					player.swingArm(hand);
-					RSWrenchHelper.wrenchBlock(player, world, pos, hand, side, hitX, hitY, hitZ);
+					if (ServerHelper.isClientWorld(world)) {
+						player.swingArm(hand);
+						return EnumActionResult.PASS;
+					}
+					RSWrenchHelper.wrenchBlock(player, world, pos, side, hitX, hitY, hitZ);
 				}
 			} catch (Exception e) {}
 		}
