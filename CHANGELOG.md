@@ -1,6 +1,9 @@
 # More Libs Changelog
 
 ### 1.12.2-1.0.1
+- Requires More Libs 1.0.3+
+- Fixed crash on server when opening Calculator GUI
+- Immersive Engineering support
 - Refined Storage Wrench support
 - IC2 Wrench support
 - Added tooltips
