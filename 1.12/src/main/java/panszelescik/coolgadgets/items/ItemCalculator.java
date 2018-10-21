@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -17,7 +16,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import panszelescik.coolgadgets.gui.CalculatorGUI;
+import panszelescik.coolgadgets.CoolGadgets;
+import panszelescik.coolgadgets.gui.GuiHandler;
 import panszelescik.morelibs.api.Helper;
 import panszelescik.morelibs.api.ItemBase;
 
@@ -33,7 +33,7 @@ public class ItemCalculator extends ItemBase {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-		Minecraft.getMinecraft().displayGuiScreen(new CalculatorGUI());
+		playerIn.openGui(CoolGadgets.instance, GuiHandler.CALCULATOR, worldIn, 0, 0, 0);
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
 	}
 	

@@ -6,9 +6,12 @@ import org.apache.logging.log4j.Logger;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import panszelescik.coolgadgets.items.*;
+import panszelescik.coolgadgets.proxy.CommonProxy;
 
 @Mod(modid = CoolGadgets.MODID, name = CoolGadgets.NAME, version = CoolGadgets.VERSION, acceptedMinecraftVersions = CoolGadgets.ACCEPTED_MINECRAFT_VERSIONS, updateJSON = CoolGadgets.UPDATE_JSON, dependencies = CoolGadgets.DEPENDENCIES)
 public class CoolGadgets {
@@ -37,6 +40,8 @@ public class CoolGadgets {
 	
 	@Mod.Instance(MODID)
 	public static CoolGadgets instance;
+	@SidedProxy(serverSide = "panszelescik.coolgadgets.proxy.CommonProxy", clientSide = "panszelescik.coolgadgets.proxy.ClientProxy")
+	public static CommonProxy proxy;
 	public static final Logger logger = LogManager.getFormatterLogger(MODID);
 	public static ItemCalculator calculator;
 	public static ItemSuperWrench superWrench;
@@ -54,5 +59,10 @@ public class CoolGadgets {
 		superWrench = new ItemSuperWrench();
 		
 		ForgeRegistries.ITEMS.registerAll(calculator, superWrench);
+	}
+	
+	@Mod.EventHandler
+	public void init(FMLInitializationEvent event) {
+		proxy.init();
 	}
 }
