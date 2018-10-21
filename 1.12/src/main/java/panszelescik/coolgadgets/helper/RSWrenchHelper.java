@@ -21,6 +21,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import panszelescik.morelibs.api.ServerHelper;
 
 /*
  * @author raoulvdberge
@@ -32,7 +33,7 @@ public class RSWrenchHelper {
 		if (!player.isSneaking()) {
 			return EnumActionResult.FAIL;
 		}
-		if (world.isRemote) {
+		if (ServerHelper.isClientWorld(world)) {
 			return EnumActionResult.SUCCESS;
 		}
 		TileEntity tile = world.getTileEntity(pos);
@@ -44,7 +45,6 @@ public class RSWrenchHelper {
         Block block = state.getBlock();
         if (block instanceof BlockCable && tile instanceof TileNode && ((TileNode) tile).getNode() instanceof ICoverable) {
         	CoverManager manager = ((ICoverable) ((TileNode) tile).getNode()).getCoverManager();
-        	
         	@SuppressWarnings("deprecation")
         	AdvancedRayTraceResult result = AdvancedRayTracer.rayTrace(
         		pos,

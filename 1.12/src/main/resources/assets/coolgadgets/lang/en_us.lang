@@ -1,7 +1,7 @@
 itemGroup.coolgadgets=Cool Gadgets
 
 item.coolgadgets.calculator.tooltip=Count in a game!
-item.coolgadgets.superwrench.tooltip=Rotate chests and dismantles machines!
+item.coolgadgets.superwrench.tooltip=Rotates blocks and dismantles machines!
 
 item.coolgadgets.calculator.name=Calculator
 item.coolgadgets.superwrench.name=Super Wrench

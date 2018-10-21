@@ -20,7 +20,7 @@ public class CoolGadgets {
 		ACCEPTED_MINECRAFT_VERSIONS = "[1.12.2,1.13)",
 		UPDATE_JSON = "https://raw.githubusercontent.com/PanSzelescik/coolgadgets/master/update.json",
 		DEPENDENCIES = 
-			  "required-after:morelibs@[1.0.2,);"
+			  "required-after:morelibs@[1.0.3,);"
 			+ "after:appliedenergistics2;"
 			+ "after:buildcraftcore;"
 			+ "after:cofhcore;"

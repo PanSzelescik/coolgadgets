@@ -41,8 +41,7 @@ import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import panszelescik.coolgadgets.helper.IC2WrenchHelper;
-import panszelescik.coolgadgets.helper.RSWrenchHelper;
+import panszelescik.coolgadgets.helper.*;
 import panszelescik.morelibs.api.BlockHelper;
 import panszelescik.morelibs.api.Helper;
 import panszelescik.morelibs.api.ItemBase;
@@ -110,27 +109,51 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 			return ServerHelper.isServerWorld(world) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
 		}
 		if (Helper.isLoaded("ic2")) {
-			try {
-				if (block.getRegistryName().toString().startsWith("ic2:")) {
+			if (BlockHelper.startWith(block, "ic2:") || BlockHelper.startWith(block, "advanced_solar_panels:")) {
+				try {
 					if (ServerHelper.isClientWorld(world)) {
 						player.swingArm(hand);
 						return EnumActionResult.PASS;
 					}
 					IC2WrenchHelper.wrenchBlock(world, pos, side, player);
-					return EnumActionResult.SUCCESS;
-				}
-			} catch (Exception e) {}
+				} catch (Exception e) {}
+			}
 		}
-		if (Helper.isLoaded("refinedstorage")) {
-			try {
-				if (block.getRegistryName().toString().startsWith("refinedstorage:")) {
+		if (Helper.isLoaded("immersiveengineering")) {
+			if (BlockHelper.startWith(block, "immersiveengineering:") || BlockHelper.startWith(block, "immersivepetroleum:") || BlockHelper.startWith(block, "immersivetech:")) {
+				try {
+					IEHammerHelper.onItemUseFirst(player, world, pos, side, hand);
+				} catch (Exception e) {}
+			}
+		}
+		return EnumActionResult.PASS;
+	}
+	
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		IBlockState state = world.getBlockState(pos);
+		Block block = state.getBlock();
+		if (Helper.isLoaded("immersiveengineering")) {
+			if (BlockHelper.startWith(block, "immersiveengineering:") || BlockHelper.startWith(block, "immersivepetroleum:") || BlockHelper.startWith(block, "immersivetech:")) {
+				try {
 					if (ServerHelper.isClientWorld(world)) {
 						player.swingArm(hand);
 						return EnumActionResult.PASS;
 					}
-					RSWrenchHelper.wrenchBlock(player, world, pos, side, hitX, hitY, hitZ);
-				}
-			} catch (Exception e) {}
+					IEHammerHelper.onItemUse(world, pos, facing);
+				} catch (Exception e) {}
+			}
+		}
+		if (Helper.isLoaded("refinedstorage")) {
+			if (BlockHelper.startWith(block, "refinedstorage:")) {
+				try {
+					if (ServerHelper.isClientWorld(world)) {
+						player.swingArm(hand);
+						return EnumActionResult.PASS;
+					}
+					RSWrenchHelper.wrenchBlock(player, world, pos, facing, hitX, hitY, hitZ);
+				} catch (Exception e) {}
+			}
 		}
 		return EnumActionResult.PASS;
 	}
