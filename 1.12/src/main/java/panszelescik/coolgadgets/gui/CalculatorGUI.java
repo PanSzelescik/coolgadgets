@@ -92,8 +92,7 @@ public class CalculatorGUI extends GuiScreen {
 					text.setText(String.valueOf(MathHelper.eval(text.getText())));
 				} catch (RuntimeException e) {
 					CoolGadgets.logger.error(e);
-					text.setText(defaultText);
-					firstTyped = true;
+					clearText();
 				}
 				break;
 			case "element":
@@ -101,8 +100,7 @@ public class CalculatorGUI extends GuiScreen {
 					text.setText(String.valueOf(Math.sqrt(Double.parseDouble(text.getText()))));
 				} catch (RuntimeException e) {
 					CoolGadgets.logger.error(e);
-					text.setText(defaultText);
-					firstTyped = true;
+					clearText();
 				}
 				break;
 			default:

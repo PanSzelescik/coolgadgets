@@ -1,6 +1,7 @@
 # More Libs Changelog
 
 ### 1.12.2-1.0.2
+- Requires More Libs 1.0.3+
 - New buttons in Calculator: Element, PI and Backspace!
 
 ### 1.12.2-1.0.1

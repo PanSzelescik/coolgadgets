@@ -1,11 +1,11 @@
 {
 	"homepage": "https://minecraft.curseforge.com/projects/coolgadgets/files",
 	"promos": {
-		"1.12.2-latest": "1.0.1",
-		"1.12.2-recommended": "1.0.1"
+		"1.12.2-latest": "1.0.2",
+		"1.12.2-recommended": "1.0.2"
 	},
 	"1.12.2": {
-		"1.0.2": "New buttons in Calculator: Element, PI and Backspace!",
+		"1.0.2": "Requires More Libs 1.0.3+\nNew buttons in Calculator: Element, PI and Backspace!",
 		"1.0.1": "Requires More Libs 1.0.3+\nFixed crash on server when opening Calculator GUI\nImmersive Engineering support\nRefined Storage Wrench support\nIC2 Wrench support\nAdded tooltips",
 		"1.0.0": "Requires More Libs 1.0.2+\nFirst version with Calculator and Super Wrench!"
 	}
