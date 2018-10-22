@@ -115,14 +115,21 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 						player.swingArm(hand);
 						return EnumActionResult.PASS;
 					}
-					IC2WrenchHelper.wrenchBlock(world, pos, side, player);
+					return IC2WrenchHelper.wrenchBlock(world, pos, side, player);
 				} catch (Exception e) {}
 			}
 		}
 		if (Helper.isLoaded("immersiveengineering")) {
 			if (BlockHelper.startWith(block, "immersiveengineering:") || BlockHelper.startWith(block, "immersivepetroleum:") || BlockHelper.startWith(block, "immersivetech:")) {
 				try {
-					IEHammerHelper.onItemUseFirst(player, world, pos, side, hand);
+					return IEHammerHelper.onItemUseFirst(player, world, pos, side, hand);
+				} catch (Exception e) {}
+			}
+		}
+		if (Helper.isLoaded("pneumaticcraft")) {
+			if (BlockHelper.startWith(block, "pneumaticcraft:")) {
+				try {
+					return PCWrenchHelper.onItemUseFirst(player, world, pos, side, hitX, hitY, hitZ, hand);
 				} catch (Exception e) {}
 			}
 		}
@@ -140,7 +147,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 						player.swingArm(hand);
 						return EnumActionResult.PASS;
 					}
-					IEHammerHelper.onItemUse(world, pos, facing);
+					return IEHammerHelper.onItemUse(world, pos, facing);
 				} catch (Exception e) {}
 			}
 		}
@@ -151,7 +158,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 						player.swingArm(hand);
 						return EnumActionResult.PASS;
 					}
-					RSWrenchHelper.wrenchBlock(player, world, pos, facing, hitX, hitY, hitZ);
+					return RSWrenchHelper.wrenchBlock(player, world, pos, facing, hitX, hitY, hitZ);
 				} catch (Exception e) {}
 			}
 		}

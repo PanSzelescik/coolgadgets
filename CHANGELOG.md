@@ -1,5 +1,9 @@
 # More Libs Changelog
 
+### 1.12.2-1.0.3
+- Added PneumaticCraft: Repressurized support
+- Fixed bug when performing some actions opening at the same time GUI
+
 ### 1.12.2-1.0.2
 - Requires More Libs 1.0.3+
 - New buttons in Calculator: Element, PI and Backspace!

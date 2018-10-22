@@ -34,6 +34,7 @@ public class CoolGadgets {
 			+ "after:immersiveengineering;"
 			+ "after:mekanism;"
 			+ "after:opencomputers;"
+			+ "after:pneumaticcraft;"
 			+ "after:projectred-core;"
 			+ "after:reborncore;"
 			+ "after:refinedstorage@[1.6.8,)";
