@@ -1,5 +1,8 @@
 # Cool Gadgets Changelog
 
+### 1.12.2-1.0.4
+- Added translation for element button
+
 ### 1.12.2-1.0.3
 - Requires More Libs 1.0.3+
 - Added PneumaticCraft: Repressurized support

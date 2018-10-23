@@ -10,7 +10,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.ResourceLocation;
-import panszelescik.coolgadgets.CoolGadgets;
+import panszelescik.morelibs.api.Helper;
 import panszelescik.morelibs.api.MathHelper;
 import panszelescik.morelibs.gui.GuiImageButton;
 
@@ -36,7 +36,7 @@ public class CalculatorGUI extends GuiScreen {
 		int sizeX = width / (2 * numButtonsX);
 		int sizeY = height / (2 * numButtonsY);
 		Object[] calcSigns = {
-				"element", "pi", "<--", "/",
+				Helper.translate("gui." + MODID + ".calculator.button.element"), "pi", "<--", "/",
 				7, 8, 9, "*",
 				4, 5, 6, "-",
 				1, 2, 3, "+",
@@ -93,7 +93,7 @@ public class CalculatorGUI extends GuiScreen {
 				try {
 					text.setText(String.valueOf(MathHelper.eval(text.getText())));
 				} catch (RuntimeException e) {
-					CoolGadgets.logger.error(e);
+					logger.error(e);
 					clearText();
 				}
 				break;
@@ -101,7 +101,7 @@ public class CalculatorGUI extends GuiScreen {
 				try {
 					text.setText(String.valueOf(Math.sqrt(Double.parseDouble(text.getText()))));
 				} catch (RuntimeException e) {
-					CoolGadgets.logger.error(e);
+					logger.error(e);
 					clearText();
 				}
 				break;

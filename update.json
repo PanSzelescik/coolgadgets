@@ -5,6 +5,7 @@
 		"1.12.2-recommended": "1.0.3"
 	},
 	"1.12.2": {
+		"1.0.4": "Added translation for element button",
 		"1.0.3": "Requires More Libs 1.0.3+\nAdded PneumaticCraft: Repressurized support\nFixed bug when performing some actions opening at the same time GUI\nCleanups",
 		"1.0.2": "Requires More Libs 1.0.3+\nNew buttons in Calculator: Element, PI and Backspace!",
 		"1.0.1": "Requires More Libs 1.0.3+\nFixed crash on server when opening Calculator GUI\nImmersive Engineering support\nRefined Storage Wrench support\nIC2 Wrench support\nAdded tooltips",

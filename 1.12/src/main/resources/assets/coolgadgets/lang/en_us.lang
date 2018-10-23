@@ -1,5 +1,7 @@
 itemGroup.coolgadgets=Cool Gadgets
 
+gui.coolgadgets.calculator.button.element=element
+
 item.coolgadgets.calculator.tooltip=Count in a game!
 item.coolgadgets.superwrench.tooltip=Rotates blocks and dismantles machines!
 
