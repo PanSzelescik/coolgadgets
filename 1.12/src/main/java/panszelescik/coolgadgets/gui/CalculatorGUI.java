@@ -36,7 +36,7 @@ public class CalculatorGUI extends GuiScreen {
 		int sizeX = width / (2 * numButtonsX);
 		int sizeY = height / (2 * numButtonsY);
 		Object[] calcSigns = {
-				"element", "pi", "<-", "/",
+				"element", "pi", "<--", "/",
 				7, 8, 9, "*",
 				4, 5, 6, "-",
 				1, 2, 3, "+",
@@ -81,8 +81,10 @@ public class CalculatorGUI extends GuiScreen {
 			case "C":
 				clearText();
 				break;
-			case "<":
-				text.setText(text.getText().substring(0, text.getText().length() - 1));
+			case "<--":
+				if (!firstTyped) {
+					text.setText(text.getText().substring(0, text.getText().length() - 1));
+				}
 				if (text.getText().isEmpty()) {
 					clearText();
 				}
@@ -130,7 +132,7 @@ public class CalculatorGUI extends GuiScreen {
 			case 1:
 				return String.valueOf(Math.PI);
 			case 2:
-				return "<";
+				return "<--";
 			case 3:
 				return "/";
 			case 4:
