@@ -24,6 +24,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -91,8 +92,6 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	
 	@Override
 	public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
-		IBlockState state = world.getBlockState(pos);
-		Block block = state.getBlock();
 		if (world.isAirBlock(pos)) {
 			return EnumActionResult.PASS;
 		}
@@ -100,6 +99,8 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 		if (MinecraftForge.EVENT_BUS.post(event) || event.getResult() == Result.DENY || event.getUseBlock() == Result.DENY || event.getUseItem() == Result.DENY) {
 			return EnumActionResult.PASS;
 		}
+		IBlockState state = world.getBlockState(pos);
+		Block block = state.getBlock();
 		if (BlockHelper.canRotate(block)) {
 			world.setBlockState(pos, BlockHelper.rotateVanillaBlock(world, state, pos), 3);
 			player.swingArm(hand);
@@ -119,17 +120,18 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 				} catch (Exception e) {}
 			}
 		}
+		ItemStack stack = player.getHeldItem(hand);
 		if (Helper.isLoaded("immersiveengineering")) {
 			if (BlockHelper.startWith(block, "immersiveengineering:") || BlockHelper.startWith(block, "immersivepetroleum:") || BlockHelper.startWith(block, "immersivetech:")) {
 				try {
-					return IEHammerHelper.onItemUseFirst(player, world, pos, side, hand);
+					return IEHammerHelper.onItemUseFirst(player, world, pos, state, side, stack);
 				} catch (Exception e) {}
 			}
 		}
 		if (Helper.isLoaded("pneumaticcraft")) {
 			if (BlockHelper.startWith(block, "pneumaticcraft:")) {
 				try {
-					return PCWrenchHelper.onItemUseFirst(player, world, pos, side, hitX, hitY, hitZ, hand);
+					return PCWrenchHelper.onItemUseFirst(player, world, pos, side, hand, stack, block);
 				} catch (Exception e) {}
 			}
 		}
@@ -140,6 +142,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		IBlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
+		TileEntity tile = world.getTileEntity(pos);
 		if (Helper.isLoaded("immersiveengineering")) {
 			if (BlockHelper.startWith(block, "immersiveengineering:") || BlockHelper.startWith(block, "immersivepetroleum:") || BlockHelper.startWith(block, "immersivetech:")) {
 				try {
@@ -147,7 +150,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 						player.swingArm(hand);
 						return EnumActionResult.PASS;
 					}
-					return IEHammerHelper.onItemUse(world, pos, facing);
+					return IEHammerHelper.onItemUse(world, pos, facing, tile);
 				} catch (Exception e) {}
 			}
 		}
@@ -158,7 +161,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 						player.swingArm(hand);
 						return EnumActionResult.PASS;
 					}
-					return RSWrenchHelper.wrenchBlock(player, world, pos, facing, hitX, hitY, hitZ);
+					return RSWrenchHelper.wrenchBlock(player, world, pos, facing, state, block, tile);
 				} catch (Exception e) {}
 			}
 		}

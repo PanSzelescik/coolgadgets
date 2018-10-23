@@ -9,8 +9,6 @@ import me.desht.pneumaticcraft.common.thirdparty.ModInteractionUtils;
 import me.desht.pneumaticcraft.lib.PneumaticValues;
 import me.desht.pneumaticcraft.lib.Sounds;
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -19,14 +17,12 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import panszelescik.morelibs.api.ServerHelper;
 
 public class PCWrenchHelper {
 	
-    public static EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
-    	ItemStack stack = player.getHeldItem(hand);
-    	if (!world.isRemote) {
-    		IBlockState state = world.getBlockState(pos);
-    		Block block = state.getBlock();
+	public static EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, EnumHand hand, ItemStack stack, Block block) {
+    	if (ServerHelper.isServerWorld(world)) {
     		IPneumaticWrenchable wrenchable;
     		if (block instanceof IPneumaticWrenchable) {
     			wrenchable = (IPneumaticWrenchable) block;
@@ -42,7 +38,9 @@ public class PCWrenchHelper {
     			}
     		}
     		if (didWork) {
-    			player.swingArm(hand);
+    			if (ServerHelper.isClientWorld(world)) {
+    				player.swingArm(hand);
+				}
     			playWrenchSound(world, pos);
     		}
     		return didWork ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
