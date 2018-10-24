@@ -32,7 +32,7 @@ public class CoolGadgets {
 			+ "after:extrautils2;"
 			+ "after:factorytech;"
 			+ "after:hammercore;"
-			+ "after:ic2@[2.8.101-ex112,);"
+			+ "after:ic2;"
 			+ "after:immersiveengineering;"
 			+ "after:integrateddynamics;"
 			+ "after:mekanism;"
@@ -40,7 +40,7 @@ public class CoolGadgets {
 			+ "after:pneumaticcraft;"
 			+ "after:projectred-core;"
 			+ "after:reborncore;"
-			+ "after:refinedstorage@[1.6.8,)";
+			+ "after:refinedstorage";
 	
 	@Mod.Instance(MODID)
 	public static CoolGadgets instance;
