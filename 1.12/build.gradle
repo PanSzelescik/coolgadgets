@@ -48,6 +48,7 @@ dependencies {
 	compile "RebornCore:RebornCore-${version_reborncore}:api"
 	compile "net.industrial-craft:industrialcraft-2:${version_ic2}:dev"
 	compile "refinedstorage:refinedstorage:${version_refinedstorage}"
+	compile "com.brandon3055.draconicevolution:Draconic-Evolution:${version_draconic}:deobf"
 }
 
 processResources {

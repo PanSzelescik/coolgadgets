@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.brandon3055.draconicevolution.api.ICrystalBinder;
 import com.rwtema.extrautils2.api.tools.IWrench;
 import com.zeitheron.hammercore.utils.wrench.IWrenchItem;
 
@@ -54,6 +55,7 @@ import reborncore.api.IToolHandler;
 	@Interface(iface = "appeng.api.implementations.items.IAEWrench", modid = "appliedenergistics2"),
 	@Interface(iface = "buildcraft.api.tools.IToolWrench", modid = "buildcraftcore"),
 	@Interface(iface = "cofh.api.item.IToolHammer", modid = "cofhcore"),
+	@Interface(iface = "com.brandon3055.draconicevolution.api.ICrystalBinder", modid = "draconicevolution"),
 	@Interface(iface = "crazypants.enderio.api.tool.IConduitControl", modid = "enderio"),
 	@Interface(iface = "crazypants.enderio.api.tool.ITool", modid = "enderio"),
 	@Interface(iface = "com.rwtema.extrautils2.api.tools.IWrench", modid = "extrautils2"),
@@ -64,7 +66,7 @@ import reborncore.api.IToolHandler;
 	@Interface(iface = "mrtjp.projectred.api.IScrewdriver", modid = "projectred-core"),
 	@Interface(iface = "reborncore.api.IToolHandler", modid = "reborncore")
 })
-public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench, IToolHammer, IConduitControl, crazypants.enderio.api.tool.ITool, IWrench, IWrenchItem, ITool, IMekWrench, Wrench, IScrewdriver, IToolHandler {
+public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench, IToolHammer, ICrystalBinder, IConduitControl, crazypants.enderio.api.tool.ITool, IWrench, IWrenchItem, ITool, IMekWrench, Wrench, IScrewdriver, IToolHandler {
 	
 	public ItemSuperWrench() {
 		super(TAB);
