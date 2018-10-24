@@ -36,6 +36,7 @@ repositories {
 	maven { url = "https://mod-buildcraft.com/maven" }
 	maven { url = "http://maven.thiakil.com/" }
 	maven { url = "https://repo.raoulvdberge.com" }
+	maven { url = "https://oss.jfrog.org/artifactory/simple/libs-release/" }
 	maven { url = "https://modmaven.k-4u.nl" }
 }
 
@@ -49,6 +50,9 @@ dependencies {
 	compile "net.industrial-craft:industrialcraft-2:${version_ic2}:dev"
 	compile "refinedstorage:refinedstorage:${version_refinedstorage}"
 	compile "com.brandon3055.draconicevolution:Draconic-Evolution:${version_draconic}:deobf"
+	compile "org.cyclops.commoncapabilities:CommonCapabilities:${version_commoncapabilities}:deobf"
+	compile "org.cyclops.cyclopscore:CyclopsCore:${version_cyclopscore}:deobf"
+	compile "org.cyclops.integrateddynamics:IntegratedDynamics:${version_integrateddynamics}:deobf"
 }
 
 processResources {

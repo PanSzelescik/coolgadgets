@@ -26,6 +26,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -37,10 +38,9 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.Optional.Interface;
-import net.minecraftforge.fml.common.Optional.InterfaceList;
-import net.minecraftforge.fml.common.Optional.Method;
+import net.minecraftforge.fml.common.Optional.*;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -270,11 +270,18 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 		arg0.swingArm(arg2);
 	}
 	
-	/* ITool - Immersive Engineering*/
+	/* ITool - Immersive Engineering */
 	@Method(modid = "immersiveengineering")
 	@Override
 	public boolean isTool(ItemStack arg0) {
 		return true;
+	}
+	
+	/* Integrated Dynamics */
+	@Method(modid = "integrateddynamics")
+	@Override
+	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
+		return IDWrenchHelper.capability();
 	}
 	
 	/* IMekWrench */
