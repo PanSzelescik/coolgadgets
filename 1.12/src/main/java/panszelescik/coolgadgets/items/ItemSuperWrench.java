@@ -111,9 +111,19 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 			world.setBlockState(pos, BlockHelper.rotateVanillaBlock(world, state, pos), 3);
 			player.swingArm(hand);
 			return ServerHelper.isServerWorld(world) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
-		} else if (!player.isSneaking() && block.rotateBlock(world, pos, side)) {
-			player.swingArm(hand);
-			return EnumActionResult.SUCCESS;
+		} else if (!BlockHelper.startWith(block, "factorytech:")) {
+			if (!player.isSneaking() && block.rotateBlock(world, pos, side)) {
+				player.swingArm(hand);
+				return EnumActionResult.SUCCESS;
+			}
+		}
+		ItemStack stack = player.getHeldItem(hand);
+		if (Helper.isLoaded("factorytech")) {
+			if (BlockHelper.startWith(block, "factorytech:")) {
+				try {
+					return FTWrenchHelper.onItemUseFirst(player, world, pos, side, stack);
+				} catch (Exception e) {}
+			}
 		}
 		if (Helper.isLoaded("ic2")) {
 			if (BlockHelper.startWith(block, "ic2:") || BlockHelper.startWith(block, "advanced_solar_panels:")) {
@@ -126,7 +136,6 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 				} catch (Exception e) {}
 			}
 		}
-		ItemStack stack = player.getHeldItem(hand);
 		if (Helper.isLoaded("immersiveengineering")) {
 			if (BlockHelper.startWith(block, "immersiveengineering:") || BlockHelper.startWith(block, "immersivepetroleum:") || BlockHelper.startWith(block, "immersivetech:")) {
 				try {

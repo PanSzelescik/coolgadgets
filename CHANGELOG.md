@@ -1,6 +1,7 @@
 # Cool Gadgets Changelog
 
 ### 1.12.2-1.0.4
+- Factory Tech support, linking to test!
 - Fix for GalactiCraft machines
 - Added translation for element button
 
