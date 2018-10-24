@@ -23,6 +23,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
@@ -85,6 +86,11 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	}
 	
 	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.EPIC;
+	}
+	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(Helper.translate(getTranslationKey() + ".tooltip"));
@@ -107,7 +113,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 			return ServerHelper.isServerWorld(world) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
 		} else if (!player.isSneaking() && block.rotateBlock(world, pos, side)) {
 			player.swingArm(hand);
-			return ServerHelper.isServerWorld(world) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
+			return EnumActionResult.SUCCESS;
 		}
 		if (Helper.isLoaded("ic2")) {
 			if (BlockHelper.startWith(block, "ic2:") || BlockHelper.startWith(block, "advanced_solar_panels:")) {
