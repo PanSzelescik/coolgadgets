@@ -41,15 +41,15 @@ repositories {
 }
 
 dependencies {
-	compile "appeng:appliedenergistics2:${version_ae2}:api"
+	compile "appeng:appliedenergistics2:${version_appliedenergistics2}:api"
+	compile "cofh:CoFHCore:${version_cofhcore}:deobf"
+	compile "com.brandon3055.draconicevolution:Draconic-Evolution:${version_draconicevolution}:deobf"
 	compile "com.mod-buildcraft:buildcraft-api:${version_buildcraft}"
-	compile "mekanism:Mekanism:${version_mekanism}:api"
-	compile "cofh:CoFHCore:${version_cofh_core}:deobf"
 	compile "li.cil.oc:OpenComputers:MC${version_opencomputers}:api"
-	compile "RebornCore:RebornCore-${version_reborncore}:api"
+	compile "mekanism:Mekanism:${version_mekanism}:api"
 	compile "net.industrial-craft:industrialcraft-2:${version_ic2}:dev"
+	compile "RebornCore:RebornCore-${version_reborncore}:api"
 	compile "refinedstorage:refinedstorage:${version_refinedstorage}"
-	compile "com.brandon3055.draconicevolution:Draconic-Evolution:${version_draconic}:deobf"
 	compile "org.cyclops.commoncapabilities:CommonCapabilities:${version_commoncapabilities}:deobf"
 	compile "org.cyclops.cyclopscore:CyclopsCore:${version_cyclopscore}:deobf"
 	compile "org.cyclops.integrateddynamics:IntegratedDynamics:${version_integrateddynamics}:deobf"

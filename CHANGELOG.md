@@ -1,5 +1,8 @@
 # Cool Gadgets Changelog
 
+### 1.12.2-1.0.5
+- Integrated Dynamics support
+
 ### 1.12.2-1.0.4
 - Requires More Libs 1.0.3+
 - Draconic Evolution's Crystal Binder support

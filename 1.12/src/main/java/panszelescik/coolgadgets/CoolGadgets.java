@@ -34,6 +34,7 @@ public class CoolGadgets {
 			+ "after:hammercore;"
 			+ "after:ic2@[2.8.101-ex112,);"
 			+ "after:immersiveengineering;"
+			+ "after:integrateddynamics;"
 			+ "after:mekanism;"
 			+ "after:opencomputers;"
 			+ "after:pneumaticcraft;"
