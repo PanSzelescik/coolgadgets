@@ -74,7 +74,6 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 		setRegistryName(new ResourceLocation(MODID, "superwrench"));
 		setHarvestLevel("wrench", 1);
 		setMaxStackSize(1);
-		setContainerItem(this);
 	}
 	
 	@Override
@@ -96,6 +95,9 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(Helper.translate(getTranslationKey() + ".tooltip"));
+		if (Helper.isLoaded("actuallyadditions")) {
+			AAWrenchHelper.addInformation(stack, tooltip);
+		}
 	}
 	
 	@Override
@@ -120,6 +122,14 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 			}
 		}
 		ItemStack stack = player.getHeldItem(hand);
+		TileEntity tile = world.getTileEntity(pos);
+		if (Helper.isLoaded("actuallyadditions")) {
+			if (BlockHelper.startWith(block, "actuallyadditions:")) {
+				try {
+					return AAWrenchHelper.onItemUse(player, world, pos, stack, tile);
+				} catch (Exception e) {}
+			}
+		}
 		if (Helper.isLoaded("factorytech")) {
 			if (BlockHelper.startWith(block, "factorytech:")) {
 				try {

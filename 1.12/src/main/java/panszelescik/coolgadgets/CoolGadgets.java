@@ -24,6 +24,7 @@ public class CoolGadgets {
 		UPDATE_JSON = "https://raw.githubusercontent.com/PanSzelescik/coolgadgets/master/update.json",
 		DEPENDENCIES = 
 			  "required-after:morelibs@[1.0.3,);"
+			+ "after:actuallyadditions;"
 			+ "after:appliedenergistics2;"
 			+ "after:buildcraftcore;"
 			+ "after:cofhcore;"

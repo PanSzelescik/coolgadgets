@@ -1,6 +1,7 @@
 # Cool Gadgets Changelog
 
 ### 1.12.2-1.0.5
+- Actually Additions support, to link Lasers you must sneaking!
 - Fixed error with element
 - Integrated Dynamics support
 

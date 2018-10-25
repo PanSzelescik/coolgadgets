@@ -1,0 +1,11 @@
+{
+	"result": {
+		"item": "coolgadgets:superwrench"
+	},
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"item": "coolgadgets:superwrench"
+		}
+	]
+}
