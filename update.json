@@ -5,7 +5,7 @@
 		"1.12.2-recommended": "1.0.4"
 	},
 	"1.12.2": {
-		"1.0.5": "Integrated Dynamics support",
+		"1.0.5": "Fixed error with element\nIntegrated Dynamics support",
 		"1.0.4": "Requires More Libs 1.0.3+\nDraconic Evolution's Crystal Binder support\nFactory Tech support, linking to test!\nFix for GalactiCraft machines\nAdded translation for element button",
 		"1.0.3": "Requires More Libs 1.0.3+\nAdded PneumaticCraft: Repressurized support\nFixed bug when performing some actions opening at the same time GUI\nCleanups",
 		"1.0.2": "Requires More Libs 1.0.3+\nNew buttons in Calculator: Element, PI and Backspace!",

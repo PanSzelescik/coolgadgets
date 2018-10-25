@@ -91,7 +91,7 @@ public class CalculatorGUI extends GuiScreen {
 				break;
 			case "=":
 				try {
-					text.setText(String.valueOf(MathHelper.eval(text.getText())));
+					equals();
 				} catch (RuntimeException e) {
 					logger.error(e);
 					clearText();
@@ -99,6 +99,7 @@ public class CalculatorGUI extends GuiScreen {
 				break;
 			case "element":
 				try {
+					equals();
 					text.setText(String.valueOf(Math.sqrt(Double.parseDouble(text.getText()))));
 				} catch (RuntimeException e) {
 					logger.error(e);
@@ -123,6 +124,10 @@ public class CalculatorGUI extends GuiScreen {
 	private void clearText() {
 		text.setText(defaultText);
 		firstTyped = true;
+	}
+	
+	private void equals() {
+		text.setText(String.valueOf(MathHelper.eval(text.getText())));
 	}
 	
 	private String getKeyFromID(int id) {

@@ -1,6 +1,7 @@
 # Cool Gadgets Changelog
 
 ### 1.12.2-1.0.5
+- Fixed error with element
 - Integrated Dynamics support
 
 ### 1.12.2-1.0.4
