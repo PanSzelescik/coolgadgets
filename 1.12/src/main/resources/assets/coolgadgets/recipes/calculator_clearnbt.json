@@ -1,0 +1,11 @@
+{
+	"result": {
+		"item": "coolgadgets:calculator"
+	},
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"item": "coolgadgets:calculator"
+		}
+	]
+}

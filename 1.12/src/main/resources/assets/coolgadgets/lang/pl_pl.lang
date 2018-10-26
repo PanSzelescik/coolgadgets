@@ -1,6 +1,7 @@
 gui.coolgadgets.calculator.button.element=pierwiastek
 
 item.coolgadgets.calculator.tooltip=Licz w grze!
+item.coolgadgets.calculator.tooltip2=Włóż do craftingu aby wyczyścić pamięć!
 item.coolgadgets.superwrench.tooltip=Obraca bloki i demontuje maszyny!
 
 item.coolgadgets.calculator.name=Kalkulator

@@ -9,17 +9,24 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import panszelescik.morelibs.api.Helper;
 import panszelescik.morelibs.api.MathHelper;
+import panszelescik.morelibs.api.NBTHelper;
 import panszelescik.morelibs.gui.GuiImageButton;
 
 public class CalculatorGUI extends GuiScreen {
 	
+	public ItemStack stack;
 	private static final String defaultText = "0.0";
 	private GuiTextField text;
 	private boolean firstTyped;
 	private static final String button = "textures/gui/button.png";
+	
+	public CalculatorGUI(ItemStack stack) {
+		this.stack = stack;
+	}
 	
 	@Override
 	public boolean doesGuiPauseGame() {
@@ -55,8 +62,8 @@ public class CalculatorGUI extends GuiScreen {
 		}
 		text = new GuiTextField(20, Minecraft.getMinecraft().fontRenderer, offsetX, offsetY - sizeY, (offsetX * 2) - 2, sizeY - 2);
 		text.setMaxStringLength(32);
-		text.setText(defaultText);
-		firstTyped = true;
+		text.setText(NBTHelper.getString(stack, "display", defaultText));
+		firstTyped = NBTHelper.getBoolean(stack, "firstTyped", true);
 	}
 	
 	public void drawScreen(int a, int b, float c) {
@@ -83,7 +90,7 @@ public class CalculatorGUI extends GuiScreen {
 				break;
 			case "<--":
 				if (!firstTyped) {
-					text.setText(text.getText().substring(0, text.getText().length() - 1));
+					setText(text.getText().substring(0, text.getText().length() - 1));
 				}
 				if (text.getText().isEmpty()) {
 					clearText();
@@ -100,7 +107,7 @@ public class CalculatorGUI extends GuiScreen {
 			case "element":
 				try {
 					equals();
-					text.setText(String.valueOf(Math.sqrt(Double.parseDouble(text.getText()))));
+					setText(String.valueOf(Math.sqrt(Double.parseDouble(text.getText()))));
 				} catch (RuntimeException e) {
 					logger.error(e);
 					clearText();
@@ -112,22 +119,32 @@ public class CalculatorGUI extends GuiScreen {
 		}
 	}
 	
+	private void setText(String txt) {
+		text.setText(txt);
+		NBTHelper.setString(stack, "display", txt);
+	}
+	
+	private void setBoolean(boolean typed) {
+		firstTyped = typed;
+		NBTHelper.setBoolean(stack, "firstTyped", typed);
+	}
+	
 	private void addText(String number) {
 		if (firstTyped) {
-			text.setText(number);
-			firstTyped = false;
+			setText(number);
+			setBoolean(false);
 		} else {
-			text.setText(text.getText() + number);
+			setText(text.getText() + number);
 		}
 	}
 	
 	private void clearText() {
-		text.setText(defaultText);
-		firstTyped = true;
+		setText(defaultText);
+		setBoolean(true);
 	}
 	
 	private void equals() {
-		text.setText(String.valueOf(MathHelper.eval(text.getText())));
+		setText(String.valueOf(MathHelper.eval(text.getText())));
 	}
 	
 	private String getKeyFromID(int id) {
