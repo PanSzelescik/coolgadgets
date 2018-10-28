@@ -18,7 +18,7 @@ import panszelescik.morelibs.gui.GuiImageButton;
 
 public class CalculatorGUI extends GuiScreen {
 	
-	public ItemStack stack;
+	private ItemStack stack;
 	private static final String defaultText = "0.0";
 	private GuiTextField text;
 	private boolean firstTyped;

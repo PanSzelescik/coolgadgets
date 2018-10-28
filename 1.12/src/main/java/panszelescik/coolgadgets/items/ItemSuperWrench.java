@@ -115,7 +115,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 			world.setBlockState(pos, BlockHelper.rotateVanillaBlock(world, state, pos), 3);
 			player.swingArm(hand);
 			return ServerHelper.isServerWorld(world) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
-		} else if (!BlockHelper.startWith(block, "factorytech:")) {
+		} else if (!BlockHelper.startWith(block, "factorytech:") && !BlockHelper.startWith(block, "ic2:")) {
 			if (!player.isSneaking() && block.rotateBlock(world, pos, side)) {
 				player.swingArm(hand);
 				return EnumActionResult.SUCCESS;
