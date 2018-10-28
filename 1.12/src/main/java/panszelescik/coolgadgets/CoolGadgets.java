@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import panszelescik.coolgadgets.items.*;
 import panszelescik.coolgadgets.proxy.CommonProxy;
 
-@Mod(modid = CoolGadgets.MODID, name = CoolGadgets.NAME, version = CoolGadgets.VERSION, acceptedMinecraftVersions = CoolGadgets.ACCEPTED_MINECRAFT_VERSIONS, updateJSON = CoolGadgets.UPDATE_JSON, dependencies = "required-after:morelibs@[1.0.4,);after:actuallyadditions;after:appliedenergistics2;after:buildcraftcore;after:cofhcore;after:draconicevolution;after:enderio;after:extrautils2;after:factorytech;after:hammercore;after:ic2;after:immersiveengineering;after:integrateddynamics;after:mekanism;after:opencomputers;after:pneumaticcraft;after:projectred-core;after:reborncore;after:refinedstorage")
+@Mod(modid = CoolGadgets.MODID, name = CoolGadgets.NAME, version = CoolGadgets.VERSION, acceptedMinecraftVersions = CoolGadgets.ACCEPTED_MINECRAFT_VERSIONS, updateJSON = CoolGadgets.UPDATE_JSON, dependencies = "required-after:morelibs@[1.0.4,);after:actuallyadditions;after:appliedenergistics2;after:buildcraftcore;after:cofhcore;after:draconicevolution;after:enderio;after:extrautils2;after:factorytech;after:hammercore;after:ic2;after:immersiveengineering;after:integrateddynamics;after:mcjtylib;after:mekanism;after:opencomputers;after:pneumaticcraft;after:projectred-core;after:reborncore;after:refinedstorage")
 public class CoolGadgets {
 	
 	public static final String

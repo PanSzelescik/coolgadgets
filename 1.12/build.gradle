@@ -45,6 +45,7 @@ dependencies {
 	compile "appeng:appliedenergistics2:${version_appliedenergistics2}:api"
 	compile "cofh:CoFHCore:${version_cofhcore}:deobf"
 	compile "com.brandon3055.draconicevolution:Draconic-Evolution:${version_draconicevolution}:deobf"
+	compile "com.github.mcjty:mcjtylib:${version_mcjtylib}"
 	compile "com.mod-buildcraft:buildcraft-api:${version_buildcraft}"
 	compile "de.ellpeck.actuallyadditions:ActuallyAdditions-unstable:${version_actuallyadditions}:dev"
 	compile "li.cil.oc:OpenComputers:MC${version_opencomputers}:api"

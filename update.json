@@ -1,11 +1,11 @@
 {
 	"homepage": "https://minecraft.curseforge.com/projects/coolgadgets/files",
 	"promos": {
-		"1.12.2-latest": "1.1.0",
-		"1.12.2-recommended": "1.1.0"
+		"1.12.2-latest": "1.1.1",
+		"1.12.2-recommended": "1.1.1"
 	},
 	"1.12.2": {
-		"1.1.1": "Requires More Libs 1.0.5+\nFix for rotating IC2 machines\nFix crash when opening Calculator GUI when Calculator is in off hand",
+		"1.1.1": "Requires More Libs 1.0.5+\nAdded RFTools support\nFix for rotating IC2 machines\nFix crash when opening Calculator GUI when Calculator is in off hand",
 		"1.1.0": "Requires More Libs 1.0.4+\nAdded Calculator's screen saving to NBT",
 		"1.0.5": "Requires More Libs 1.0.3+\nActually Additions support, to link Lasers you must sneaking!\nFixed error with element\nIntegrated Dynamics support",
 		"1.0.4": "Requires More Libs 1.0.3+\nDraconic Evolution's Crystal Binder support\nFactory Tech support, linking to test!\nFix for GalactiCraft machines\nAdded translation for element button",

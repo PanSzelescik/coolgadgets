@@ -16,6 +16,8 @@ import buildcraft.api.tools.IToolWrench;
 import cofh.api.item.IToolHammer;
 import crazypants.enderio.api.tool.IConduitControl;
 import li.cil.oc.api.internal.Wrench;
+import mcjty.lib.api.smartwrench.SmartWrench;
+import mcjty.lib.api.smartwrench.SmartWrenchMode;
 import mekanism.api.IMekWrench;
 import mrtjp.projectred.api.IScrewdriver;
 import net.minecraft.block.Block;
@@ -45,10 +47,7 @@ import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import panszelescik.coolgadgets.helper.*;
-import panszelescik.morelibs.api.BlockHelper;
-import panszelescik.morelibs.api.Helper;
-import panszelescik.morelibs.api.ItemBase;
-import panszelescik.morelibs.api.ServerHelper;
+import panszelescik.morelibs.api.*;
 import reborncore.api.IToolHandler;
 
 @InterfaceList({
@@ -61,12 +60,13 @@ import reborncore.api.IToolHandler;
 	@Interface(iface = "com.rwtema.extrautils2.api.tools.IWrench", modid = "extrautils2"),
 	@Interface(iface = "com.zeitheron.hammercore.utils.wrench.IWrenchItem", modid = "hammercore"),
 	@Interface(iface = "blusunrize.immersiveengineering.api.tool.ITool", modid = "immersiveengineering"),
+	@Interface(iface = "mcjty.lib.api.smartwrench.SmartWrench", modid = "mcjtylib"),
 	@Interface(iface = "mekanism.api.IMekWrench", modid = "mekanism"),
 	@Interface(iface = "li.cil.oc.api.internal.Wrench", modid = "opencomputers"),
 	@Interface(iface = "mrtjp.projectred.api.IScrewdriver", modid = "projectred-core"),
 	@Interface(iface = "reborncore.api.IToolHandler", modid = "reborncore")
 })
-public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench, IToolHammer, ICrystalBinder, IConduitControl, crazypants.enderio.api.tool.ITool, IWrench, IWrenchItem, ITool, IMekWrench, Wrench, IScrewdriver, IToolHandler {
+public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench, IToolHammer, ICrystalBinder, IConduitControl, crazypants.enderio.api.tool.ITool, IWrench, IWrenchItem, ITool, IMekWrench, Wrench, IScrewdriver, IToolHandler, SmartWrench {
 	
 	public ItemSuperWrench() {
 		super(TAB);
@@ -292,6 +292,13 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
 		return IDWrenchHelper.capability();
+	}
+	
+	/* SmartWrench */
+	@Method(modid = "mcjtylib")
+	@Override
+	public SmartWrenchMode getMode(ItemStack stack) {
+		return SmartWrenchMode.MODE_WRENCH;
 	}
 	
 	/* IMekWrench */

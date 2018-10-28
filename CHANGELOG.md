@@ -2,6 +2,7 @@
 
 ### 1.12.2-1.1.1
 - Requires More Libs 1.0.5+
+- Added RFTools support
 - Fix for rotating IC2 machines
 - Fix crash when opening Calculator GUI when Calculator is in off hand
 
