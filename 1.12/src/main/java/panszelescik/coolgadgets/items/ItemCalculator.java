@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import panszelescik.coolgadgets.CoolGadgets;
 import panszelescik.coolgadgets.gui.GuiHandler;
+import panszelescik.morelibs.api.HandHelper;
 import panszelescik.morelibs.api.Helper;
 import panszelescik.morelibs.api.ItemBase;
 import panszelescik.morelibs.api.NBTHelper;
@@ -34,7 +35,7 @@ public class ItemCalculator extends ItemBase {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-		playerIn.openGui(CoolGadgets.instance, GuiHandler.CALCULATOR, worldIn, 0, 0, 0);
+		playerIn.openGui(CoolGadgets.instance, GuiHandler.CALCULATOR, worldIn, 0, 0, HandHelper.encrypt(handIn));
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
 	}
 	

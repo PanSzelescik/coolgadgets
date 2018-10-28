@@ -1,5 +1,9 @@
 # Cool Gadgets Changelog
 
+### 1.12.2-1.1.1
+- Requires More Libs 1.0.5+
+- Fix crash when opening Calculator GUI when Calculator is in off hand
+
 ### 1.12.2-1.1.0
 - Requires More Libs 1.0.4+
 - Added Calculator's screen saving to NBT
