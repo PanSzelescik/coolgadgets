@@ -19,7 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import panszelescik.morelibs.api.ServerHelper;
 
-public class PCWrenchHelper {
+public class PneumaticCraftHelper {
 	
 	public static EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, EnumHand hand, ItemStack stack, Block block) {
 		if (ServerHelper.isServerWorld(world)) {

@@ -26,7 +26,7 @@ import panszelescik.morelibs.api.ServerHelper;
  * @author raoulvdberge
  * https://github.com/raoulvdberge/refinedstorage/blob/mc1.12/src/main/java/com/raoulvdberge/refinedstorage/item/ItemWrench.java
  */
-public class RSWrenchHelper {
+public class RefinedStorageHelper {
 	
 	public static EnumActionResult wrenchBlock(EntityPlayer player, World world, BlockPos pos, EnumFacing side, IBlockState state, Block block, TileEntity tile) {
 		if (!player.isSneaking()) {

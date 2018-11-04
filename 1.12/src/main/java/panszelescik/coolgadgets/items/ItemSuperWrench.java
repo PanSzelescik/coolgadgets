@@ -96,7 +96,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(Helper.translate(getTranslationKey() + ".tooltip"));
 		if (Helper.isLoaded("actuallyadditions")) {
-			AAWrenchHelper.addInformation(stack, tooltip);
+			ActuallyAdditionsHelper.addInformation(stack, tooltip);
 		}
 	}
 	
@@ -126,14 +126,14 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 		if (Helper.isLoaded("actuallyadditions")) {
 			if (BlockHelper.startWith(block, "actuallyadditions:")) {
 				try {
-					return AAWrenchHelper.onItemUse(player, world, pos, stack, tile);
+					return ActuallyAdditionsHelper.onItemUse(player, world, pos, stack, tile);
 				} catch (Exception e) {}
 			}
 		}
 		if (Helper.isLoaded("factorytech")) {
 			if (BlockHelper.startWith(block, "factorytech:")) {
 				try {
-					return FTWrenchHelper.onItemUseFirst(player, world, pos, side, stack);
+					return FactoryTechHelper.onItemUseFirst(player, world, pos, side, stack);
 				} catch (Exception e) {}
 			}
 		}
@@ -144,21 +144,21 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 						player.swingArm(hand);
 						return EnumActionResult.PASS;
 					}
-					return IC2WrenchHelper.wrenchBlock(world, pos, side, player);
+					return IndustrialCraft2Helper.wrenchBlock(player, world, pos, side);
 				} catch (Exception e) {}
 			}
 		}
 		if (Helper.isLoaded("immersiveengineering")) {
 			if (BlockHelper.startWith(block, "immersiveengineering:") || BlockHelper.startWith(block, "immersivepetroleum:") || BlockHelper.startWith(block, "immersivetech:")) {
 				try {
-					return IEHammerHelper.onItemUseFirst(player, world, pos, state, side, stack);
+					return ImmersiveEngineeringHelper.onItemUseFirst(player, world, pos, side, state, stack);
 				} catch (Exception e) {}
 			}
 		}
 		if (Helper.isLoaded("pneumaticcraft")) {
 			if (BlockHelper.startWith(block, "pneumaticcraft:")) {
 				try {
-					return PCWrenchHelper.onItemUseFirst(player, world, pos, side, hand, stack, block);
+					return PneumaticCraftHelper.onItemUseFirst(player, world, pos, side, hand, stack, block);
 				} catch (Exception e) {}
 			}
 		}
@@ -166,7 +166,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	}
 	
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		IBlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
 		TileEntity tile = world.getTileEntity(pos);
@@ -177,7 +177,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 						player.swingArm(hand);
 						return EnumActionResult.PASS;
 					}
-					return IEHammerHelper.onItemUse(world, pos, facing, tile);
+					return ImmersiveEngineeringHelper.onItemUse(world, pos, side, tile);
 				} catch (Exception e) {}
 			}
 		}
@@ -188,7 +188,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 						player.swingArm(hand);
 						return EnumActionResult.PASS;
 					}
-					return RSWrenchHelper.wrenchBlock(player, world, pos, facing, state, block, tile);
+					return RefinedStorageHelper.wrenchBlock(player, world, pos, side, state, block, tile);
 				} catch (Exception e) {}
 			}
 		}
@@ -198,8 +198,8 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	/* IAEWrench */
 	@Method(modid = "appliedenergistics2")
 	@Override
-	public boolean canWrench(ItemStack arg0, EntityPlayer arg1, BlockPos arg2) {
-		arg1.swingArm(EnumHand.MAIN_HAND);
+	public boolean canWrench(ItemStack stack, EntityPlayer player, BlockPos pos) {
+		player.swingArm(EnumHand.MAIN_HAND);
 		return true;
 	}
 	
@@ -219,26 +219,26 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	/* IToolHammer */
 	@Method(modid = "cofhcore")
 	@Override
-	public boolean isUsable(ItemStack item, EntityLivingBase user, BlockPos pos) {
+	public boolean isUsable(ItemStack item, EntityLivingBase player, BlockPos pos) {
 		return true;
 	}
 	
 	@Method(modid = "cofhcore")
 	@Override
-	public boolean isUsable(ItemStack item, EntityLivingBase user, Entity entity) {
+	public boolean isUsable(ItemStack item, EntityLivingBase player, Entity entity) {
 		return true;
 	}
 	
 	@Method(modid = "cofhcore")
 	@Override
-	public void toolUsed(ItemStack item, EntityLivingBase user, BlockPos pos) {
-		user.swingArm(EnumHand.MAIN_HAND);
+	public void toolUsed(ItemStack item, EntityLivingBase player, BlockPos pos) {
+		player.swingArm(EnumHand.MAIN_HAND);
 	}
 	
 	@Method(modid = "cofhcore")
 	@Override
-	public void toolUsed(ItemStack item, EntityLivingBase user, Entity entity) {
-		user.swingArm(EnumHand.MAIN_HAND);
+	public void toolUsed(ItemStack item, EntityLivingBase player, Entity entity) {
+		player.swingArm(EnumHand.MAIN_HAND);
 	}
 	
 	/* IConduitControl */
@@ -257,33 +257,33 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	/* ITool - Ender IO */
 	@Method(modid = "enderio")
 	@Override
-	public boolean canUse(EnumHand arg0, EntityPlayer arg1, BlockPos arg2) {
+	public boolean canUse(EnumHand hand, EntityPlayer player, BlockPos pos) {
 		return true;
 	}
 	
 	@Method(modid = "enderio")
 	@Override
-	public void used(EnumHand arg0, EntityPlayer arg1, BlockPos arg2) {
-		arg1.swingArm(arg0);
+	public void used(EnumHand hand, EntityPlayer player, BlockPos pos) {
+		player.swingArm(hand);
 	}
 	
 	/* IWrenchItem */
 	@Method(modid = "hammercore")
 	@Override
-	public boolean canWrench(ItemStack arg0) {
+	public boolean canWrench(ItemStack stack) {
 		return true;
 	}
 	
 	@Method(modid = "hammercore")
 	@Override
-	public void onWrenchUsed(EntityPlayer arg0, BlockPos arg1, EnumHand arg2) {
-		arg0.swingArm(arg2);
+	public void onWrenchUsed(EntityPlayer player, BlockPos pos, EnumHand hand) {
+		player.swingArm(hand);
 	}
 	
 	/* ITool - Immersive Engineering */
 	@Method(modid = "immersiveengineering")
 	@Override
-	public boolean isTool(ItemStack arg0) {
+	public boolean isTool(ItemStack stack) {
 		return true;
 	}
 	
@@ -291,7 +291,7 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	@Method(modid = "integrateddynamics")
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
-		return IDWrenchHelper.capability();
+		return IntegratedDynamicsHelper.capability();
 	}
 	
 	/* SmartWrench */
@@ -318,14 +318,14 @@ public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench,
 	/* IScrewdriver */
 	@Method(modid = "projectred-core")
 	@Override
-	public boolean canUse(EntityPlayer arg0, ItemStack arg1) {
+	public boolean canUse(EntityPlayer player, ItemStack stack) {
 		return true;
 	}
 	
 	@Method(modid = "projectred-core")
 	@Override
-	public void damageScrewdriver(EntityPlayer arg0, ItemStack arg1) {
-		arg0.swingArm(EnumHand.MAIN_HAND);
+	public void damageScrewdriver(EntityPlayer player, ItemStack stack) {
+		player.swingArm(EnumHand.MAIN_HAND);
 	}
 	
 	/* IToolHandler */

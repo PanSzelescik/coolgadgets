@@ -17,7 +17,7 @@ import net.minecraft.world.World;
  * @author dalapo
  * https://gitlab.com/dalapo/FactoryTech/blob/master/src/main/java/dalapo/factech/item/ItemWrench.java
  */
-public class FTWrenchHelper {
+public class FactoryTechHelper {
 	
 	public static EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, ItemStack stack) {
 		if (world.getBlockState(pos).getBlock() instanceof Wrenchable) {

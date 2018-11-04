@@ -18,10 +18,10 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class IEHammerHelper {
+public class ImmersiveEngineeringHelper {
 	
 	@Nonnull
-	public static EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, IBlockState state, EnumFacing side, ItemStack stack) {
+	public static EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, IBlockState state, ItemStack stack) {
 		for (MultiblockHandler.IMultiblock mb : MultiblockHandler.getMultiblocks()) {
 			if (mb.isBlockTrigger(state)) {
 				if (MultiblockHandler.postMultiblockFormationEvent(player, mb, pos, stack).isCanceled()) {

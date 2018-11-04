@@ -17,7 +17,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import panszelescik.morelibs.api.ServerHelper;
 
-public class AAWrenchHelper {
+public class ActuallyAdditionsHelper {
 	
 	public static EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, ItemStack stack, TileEntity tile){
 		if (tile instanceof TileEntityLaserRelay) {

@@ -9,9 +9,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class IC2WrenchHelper {
+public class IndustrialCraft2Helper {
 	
-	public static EnumActionResult wrenchBlock(World world, BlockPos pos, EnumFacing side, EntityPlayer player) {
+	public static EnumActionResult wrenchBlock(EntityPlayer player, World world, BlockPos pos, EnumFacing side) {
 		ItemToolWrench.wrenchBlock(world, pos, side, player, true);
 		IC2.audioManager.playOnce(player, PositionSpec.Hand, "Tools/wrench.ogg", true, IC2.audioManager.getDefaultVolume());
 		return EnumActionResult.SUCCESS;

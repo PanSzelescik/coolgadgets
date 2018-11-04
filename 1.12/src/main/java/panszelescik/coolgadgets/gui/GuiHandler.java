@@ -1,7 +1,6 @@
 package panszelescik.coolgadgets.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import panszelescik.morelibs.api.HandHelper;
@@ -12,15 +11,19 @@ public class GuiHandler implements IGuiHandler {
 	
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if (ID == CALCULATOR)
-			return null;
+		switch (ID) {
+			case CALCULATOR:
+				return null;
+		}
 		return null;
 	}
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if (ID == CALCULATOR)
-			return new CalculatorGUI(player.getHeldItem(HandHelper.decrypt(z)));
+		switch (ID) {
+			case CALCULATOR:
+				return new CalculatorGUI(player.getHeldItem(HandHelper.decrypt(z)));
+		}
 		return null;
 	}
 }

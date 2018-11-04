@@ -6,7 +6,7 @@ import org.cyclops.integrateddynamics.Capabilities;
 
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
-public class IDWrenchHelper {
+public class IntegratedDynamicsHelper {
 	
 	public static ICapabilityProvider capability() {
 		return new DefaultCapabilityProvider<>(() -> Capabilities.WRENCH, new DefaultWrench());
