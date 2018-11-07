@@ -32,30 +32,83 @@ minecraft {
 }
 
 repositories {
-	maven { url = "http://maven.covers1624.net" }
-	maven { url = "https://mod-buildcraft.com/maven" }
-	maven { url = "http://maven.thiakil.com/" }
-	maven { url = "https://repo.raoulvdberge.com" }
-	maven { url = "https://oss.jfrog.org/artifactory/simple/libs-release/" }
-	maven { url = "https://maven.chaosfield.at" }
-	maven { url = "https://modmaven.k-4u.nl" }
+	maven {
+		name = "CoFH Core, Draconic Evolution"
+		url = "http://maven.covers1624.net"
+	}
+	maven {
+		name = "BuildCraft"
+		url = "https://mod-buildcraft.com/maven"
+	}
+	maven {
+		name = "Mekanism"
+		url = "http://maven.thiakil.com/"
+	}
+	maven {
+		name = "Refined Storage"
+		url = "https://repo.raoulvdberge.com"
+	}
+	maven {
+		name = "Common Capabilities, Cyclops Core, Integrated Dynamics"
+		url = "https://oss.jfrog.org/artifactory/simple/libs-release/"
+	}
+	maven {
+		name = "Actually Additions"
+		url = "https://maven.chaosfield.at"
+	}
+	maven {
+		name = "Open Computers, Applied Energistics"
+		url = "http://maven.cil.li"
+	}
+	maven {
+		name = "McJty Lib"
+		url = "http://maven.k-4u.nl"
+	}
+	maven {
+		name = "Project Red"
+		url = "http://chickenbones.net/maven/"
+	}
+	maven {
+		name = "Reborn Core"
+		url = "http://maven.modmuss50.me"
+	}
+	maven {
+		name = "Ender IO"
+		url = "http://maven2.tterrag.com"
+	}
+	maven {
+		name = "Immersive Engineering"
+		url = "https://maven.blamejared.com/"
+	}
+	maven {
+        name = "CurseForge, Hammer Core"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
+	maven {
+		name = "Other"
+		url = "https://modmaven.k-4u.nl"
+	}
 }
 
 dependencies {
 	compile "appeng:appliedenergistics2:${version_appliedenergistics2}:api"
+	compile "blusunrize:ImmersiveEngineering:${version_immersiveengineering}:deobf"
 	compile "cofh:CoFHCore:${version_cofhcore}:deobf"
 	compile "com.brandon3055.draconicevolution:Draconic-Evolution:${version_draconicevolution}:deobf"
+	compile "com.enderio:EnderIO:${version_enderio}:api"
 	compile "com.github.mcjty:mcjtylib:${version_mcjtylib}"
 	compile "com.mod-buildcraft:buildcraft-api:${version_buildcraft}"
 	compile "de.ellpeck.actuallyadditions:ActuallyAdditions-unstable:${version_actuallyadditions}:dev"
+	compile "hammer-core:HammerCore-${version_hammercore}:release:deobf"
 	compile "li.cil.oc:OpenComputers:MC${version_opencomputers}:api"
 	compile "mekanism:Mekanism:${version_mekanism}:api"
+	compile "mrtjp:ProjectRed:${version_projectred}:deobf"
 	compile "net.industrial-craft:industrialcraft-2:${version_ic2}:dev"
-	compile "RebornCore:RebornCore-${version_reborncore}:api"
-	compile "refinedstorage:refinedstorage:${version_refinedstorage}"
 	compile "org.cyclops.commoncapabilities:CommonCapabilities:${version_commoncapabilities}:deobf"
 	compile "org.cyclops.cyclopscore:CyclopsCore:${version_cyclopscore}:deobf"
 	compile "org.cyclops.integrateddynamics:IntegratedDynamics:${version_integrateddynamics}:deobf"
+	compile "RebornCore:RebornCore-${version_reborncore}:api"
+	compile "refinedstorage:refinedstorage:${version_refinedstorage}"
 }
 
 processResources {
