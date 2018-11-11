@@ -1,5 +1,9 @@
 # Cool Gadgets Changelog
 
+### 1.12.2-1.1.2
+- Requires More Libs 1.0.7+
+- Added Lunette! To zoom you must sneak on ground
+
 ### 1.12.2-1.1.1
 - Requires More Libs 1.0.5+
 - Added RFTools support

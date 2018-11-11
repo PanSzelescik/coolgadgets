@@ -21,6 +21,15 @@
 	]
 },
 {
+	"name": "GLASS",
+	"ingredient": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "blockGlass"
+		}
+	]
+},
+{
 	"name": "IRON",
 	"ingredient": [
 		{

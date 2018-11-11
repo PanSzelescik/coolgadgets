@@ -1,0 +1,22 @@
+{
+	"result": {
+		"item": "coolgadgets:lunette"
+	},
+	"pattern": [
+		"GI ",
+		"IR ",
+		"  I"
+	],
+	"type": "forge:ore_shaped",
+	"key": {
+		"G": {
+			"item": "#GLASS"
+		},
+		"R": {
+			"item": "#REDSTONE"
+		},
+		"I": {
+			"item": "#IRON"
+		}
+	}
+}
