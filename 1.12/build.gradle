@@ -103,6 +103,8 @@ repositories {
 }
 
 dependencies {
+	compile "vazkii.patchouli:Patchouli:${version_patchouli}"
+	
 	compile "appeng:appliedenergistics2:${version_appliedenergistics2}:api"
 	compile "blusunrize:ImmersiveEngineering:${version_immersiveengineering}:deobf"
 	compile "cofh:CoFHCore:${version_cofhcore}:deobf"
@@ -142,10 +144,11 @@ curseforge {
 	apiKey = ''
 	project {
 		id = '305241'
-		releaseType = 'release'
+		releaseType = 'beta'
 		changelog = 'https://github.com/PanSzelescik/coolgadgets/blob/master/CHANGELOG.md'
 		relations {
 			requiredDependency 'morelibs'
+			optionalDependency 'patchouli'
 		}
 	}
 }

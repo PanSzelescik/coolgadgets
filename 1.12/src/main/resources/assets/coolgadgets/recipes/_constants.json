@@ -1,5 +1,13 @@
 [
 {
+	"name": "BOOK",
+	"ingredient": [
+		{
+			"item": "minecraft:book"
+		}
+	]
+},
+{
 	"name": "BUTTON",
 	"ingredient": [
 		{

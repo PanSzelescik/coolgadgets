@@ -1,0 +1,23 @@
+{
+	"name": "Super Wrench",
+	"icon": "coolgadgets:superwrench",
+	"category": "items",
+	"pages": [
+		{
+			"type": "spotlight",
+			"text": "This is $(item)Super Wrench$(). This wrench has support for many mods and can rotate blocks.",
+			"item": "coolgadgets:superwrench",
+			"link_recipe": true
+		},
+		{
+			"type": "crafting",
+			"text": "Creating the $(item)Super Wrench$().",
+			"recipe": "coolgadgets:superwrench"
+		},
+		{
+			"type": "crafting",
+			"text": "Clearing saved informations.",
+			"recipe": "coolgadgets:superwrench_clearnbt"
+		}
+	]
+}

@@ -2,10 +2,14 @@ itemGroup.coolgadgets=Cool Gadgets
 
 gui.coolgadgets.calculator.button.element=element
 
+info.coolgadgets.book.subtitle=The guide to Cool Gadgets
 item.coolgadgets.calculator.tooltip=Count in a game!
 item.coolgadgets.calculator.tooltip2=Place in Crafting Grid to clear storage!
 item.coolgadgets.superwrench.tooltip=Rotates blocks and dismantles machines!
 
+item.coolgadgets.book.name=Book of Gadgets
 item.coolgadgets.calculator.name=Calculator
 item.coolgadgets.lunette.name=Lunette
 item.coolgadgets.superwrench.name=Super Wrench
+
+info.coolgadgets.book.landing=Some items are complicated. This book is help for you.

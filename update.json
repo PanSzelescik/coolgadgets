@@ -1,10 +1,11 @@
 {
 	"homepage": "https://minecraft.curseforge.com/projects/coolgadgets/files",
 	"promos": {
-		"1.12.2-latest": "1.1.2",
-		"1.12.2-recommended": "1.1.2"
+		"1.12.2-latest": "1.2.0",
+		"1.12.2-recommended": "1.2.0"
 	},
 	"1.12.2": {
+		"1.2.0": "Requires More Libs 1.0.7+\nAdded Patchouli support! You don't require it, but I recommend installing - https://minecraft.curseforge.com/projects/patchouli",
 		"1.1.2": "Requires More Libs 1.0.7+\nAdded Lunette! To zoom you must sneak on ground",
 		"1.1.1": "Requires More Libs 1.0.5+\nAdded RFTools support\nFix for rotating IC2 machines\nFix crash when opening Calculator GUI when Calculator is in off hand",
 		"1.1.0": "Requires More Libs 1.0.4+\nAdded Calculator's screen saving to NBT",

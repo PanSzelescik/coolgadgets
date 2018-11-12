@@ -14,7 +14,7 @@ import panszelescik.coolgadgets.items.*;
 import panszelescik.coolgadgets.proxy.CommonProxy;
 import panszelescik.morelibs.api.Helper;
 
-@Mod(modid = CoolGadgets.MODID, name = CoolGadgets.NAME, version = CoolGadgets.VERSION, acceptedMinecraftVersions = "[1.12.2,1.13)", updateJSON = "https://raw.githubusercontent.com/PanSzelescik/coolgadgets/master/update.json", dependencies = "required-after:morelibs@[1.0.7,);after:actuallyadditions;after:appliedenergistics2;after:buildcraftcore;after:cofhcore;after:draconicevolution;after:enderio;after:extrautils2;after:factorytech;after:hammercore;after:ic2;after:immersiveengineering;after:integrateddynamics;after:mcjtylib;after:mekanism;after:opencomputers;after:pneumaticcraft;after:projectred-core;after:reborncore;after:refinedstorage")
+@Mod(modid = CoolGadgets.MODID, name = CoolGadgets.NAME, version = CoolGadgets.VERSION, acceptedMinecraftVersions = "[1.12.2,1.13)", updateJSON = "https://raw.githubusercontent.com/PanSzelescik/coolgadgets/master/update.json", dependencies = "required-after:morelibs@[1.0.7,);after:patchouli@[1.0-6,);after:actuallyadditions;after:appliedenergistics2;after:buildcraftcore;after:cofhcore;after:draconicevolution;after:enderio;after:extrautils2;after:factorytech;after:hammercore;after:ic2;after:immersiveengineering;after:integrateddynamics;after:mcjtylib;after:mekanism;after:opencomputers;after:pneumaticcraft;after:projectred-core;after:reborncore;after:refinedstorage")
 public class CoolGadgets {
 	
 	public static final String
