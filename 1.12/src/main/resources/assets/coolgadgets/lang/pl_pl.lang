@@ -1,9 +1,13 @@
 gui.coolgadgets.calculator.button.element=pierwiastek
 
+info.coolgadgets.book.tooltip=Przewodnik do gadżetów
 item.coolgadgets.calculator.tooltip=Licz w grze!
 item.coolgadgets.calculator.tooltip2=Włóż do craftingu aby wyczyścić pamięć!
 item.coolgadgets.superwrench.tooltip=Obraca bloki i demontuje maszyny!
 
+item.coolgadgets.book.name=Książka gadżetów
 item.coolgadgets.calculator.name=Kalkulator
 item.coolgadgets.lunette.name=Luneta
 item.coolgadgets.superwrench.name=Super Klucz
+
+info.coolgadgets.book.landing=Niektóre przedmioty są nieco skomplikowane. Ta książka pomoże ci w obsłudze gadżetów z moda Cool Gadgets.$(br2)$(l:https://minecraft.curseforge.com/projects/coolgadgets)Strona$(/l)$(br)$(l:https://github.com/PanSzelescik/coolgadgets)GitHub$(/l)
