@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url = "https://files.minecraftforge.net/maven" }
 		maven { url = "https://plugins.gradle.org/m2/" }
     }
     dependencies {
@@ -144,7 +144,7 @@ curseforge {
 	apiKey = ''
 	project {
 		id = '305241'
-		releaseType = 'beta'
+		releaseType = 'release'
 		changelog = 'https://github.com/PanSzelescik/coolgadgets/blob/master/CHANGELOG.md'
 		relations {
 			requiredDependency 'morelibs'
