@@ -144,7 +144,7 @@ curseforge {
 	apiKey = ''
 	project {
 		id = '305241'
-		releaseType = 'release'
+		releaseType = 'beta'
 		changelog = 'https://github.com/PanSzelescik/coolgadgets/blob/master/CHANGELOG.md'
 		relations {
 			requiredDependency 'morelibs'

@@ -1,5 +1,9 @@
 # Cool Gadgets Changelog
 
+### 1.12.2-1.2.1
+- Requires More Libs 1.0.7+
+- Added Polish Patchouli book, still beta
+
 ### 1.12.2-1.2.0
 - Requires More Libs 1.0.7+
 - Added Patchouli support! You don't require it, but I recommend installing - https://minecraft.curseforge.com/projects/patchouli
