@@ -11,3 +11,5 @@ item.coolgadgets.lunette.name=Luneta
 item.coolgadgets.superwrench.name=Super Klucz
 
 info.coolgadgets.book.landing=Niektóre przedmioty są nieco skomplikowane. Ta książka pomoże ci w obsłudze gadżetów z moda Cool Gadgets.$(br2)$(l:https://minecraft.curseforge.com/projects/coolgadgets)Strona$(/l)$(br)$(l:https://github.com/PanSzelescik/coolgadgets)GitHub$(/l)
+
+tile.coolgadgets.block_breaker.name=Niszczyciel bloków
