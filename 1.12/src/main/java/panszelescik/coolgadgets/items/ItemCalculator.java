@@ -12,29 +12,25 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import panszelescik.coolgadgets.gui.GuiHandler;
+import panszelescik.coolgadgets.gui.ModGuis;
 import panszelescik.morelibs.api.HandHelper;
 import panszelescik.morelibs.api.Helper;
-import panszelescik.morelibs.api.ItemBase;
 import panszelescik.morelibs.api.NBTHelper;
 
-public class ItemCalculator extends ItemBase {
+public class ItemCalculator extends BaseItem {
 
 	public ItemCalculator() {
-		super(TAB);
-		setTranslationKey(MODID + ".calculator");
-		setRegistryName(new ResourceLocation(MODID, "calculator"));
+		super("calculator");
 		setMaxStackSize(1);
 	}
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-		playerIn.openGui(instance, GuiHandler.CALCULATOR, worldIn, 0, 0, HandHelper.encrypt(handIn));
+		playerIn.openGui(instance, ModGuis.CALCULATOR, worldIn, 0, 0, HandHelper.encrypt(handIn));
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
 	}
 	

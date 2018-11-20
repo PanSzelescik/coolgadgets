@@ -5,7 +5,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import panszelescik.morelibs.api.HandHelper;
 
-public class GuiHandler implements IGuiHandler {
+public class ModGuis implements IGuiHandler {
 	
 	public static final int CALCULATOR = 0;
 	

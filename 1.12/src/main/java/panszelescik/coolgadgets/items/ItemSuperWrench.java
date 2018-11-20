@@ -1,7 +1,5 @@
 package panszelescik.coolgadgets.items;
 
-import static panszelescik.coolgadgets.CoolGadgets.*;
-
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -33,7 +31,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
@@ -42,12 +39,22 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.Optional.*;
+import net.minecraftforge.fml.common.Optional.Interface;
+import net.minecraftforge.fml.common.Optional.InterfaceList;
+import net.minecraftforge.fml.common.Optional.Method;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import panszelescik.coolgadgets.helper.*;
-import panszelescik.morelibs.api.*;
+import panszelescik.coolgadgets.helper.ActuallyAdditionsHelper;
+import panszelescik.coolgadgets.helper.FactoryTechHelper;
+import panszelescik.coolgadgets.helper.ImmersiveEngineeringHelper;
+import panszelescik.coolgadgets.helper.IndustrialCraft2Helper;
+import panszelescik.coolgadgets.helper.IntegratedDynamicsHelper;
+import panszelescik.coolgadgets.helper.PneumaticCraftHelper;
+import panszelescik.coolgadgets.helper.RefinedStorageHelper;
+import panszelescik.morelibs.api.BlockHelper;
+import panszelescik.morelibs.api.Helper;
+import panszelescik.morelibs.api.ServerHelper;
 import reborncore.api.IToolHandler;
 
 @InterfaceList({
@@ -66,12 +73,10 @@ import reborncore.api.IToolHandler;
 	@Interface(iface = "mrtjp.projectred.api.IScrewdriver", modid = "projectred-core"),
 	@Interface(iface = "reborncore.api.IToolHandler", modid = "reborncore")
 })
-public class ItemSuperWrench extends ItemBase implements IAEWrench, IToolWrench, IToolHammer, ICrystalBinder, IConduitControl, crazypants.enderio.api.tool.ITool, IWrench, IWrenchItem, ITool, IMekWrench, Wrench, IScrewdriver, IToolHandler, SmartWrench {
+public class ItemSuperWrench extends BaseItem implements IAEWrench, IToolWrench, IToolHammer, ICrystalBinder, IConduitControl, crazypants.enderio.api.tool.ITool, IWrench, IWrenchItem, ITool, IMekWrench, Wrench, IScrewdriver, IToolHandler, SmartWrench {
 	
 	public ItemSuperWrench() {
-		super(TAB);
-		setTranslationKey(MODID + ".superwrench");
-		setRegistryName(new ResourceLocation(MODID, "superwrench"));
+		super("superwrench");
 		setHarvestLevel("wrench", 1);
 		setMaxStackSize(1);
 	}
