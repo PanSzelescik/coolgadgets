@@ -1,10 +1,11 @@
 {
 	"homepage": "https://minecraft.curseforge.com/projects/coolgadgets/files",
 	"promos": {
-		"1.12.2-latest": "1.2.1",
-		"1.12.2-recommended": "1.2.1"
+		"1.12.2-latest": "1.2.2",
+		"1.12.2-recommended": "1.2.2"
 	},
 	"1.12.2": {
+		"1.2.2": "Requires More Libs 1.0.8+\nPatchouli book works cool",
 		"1.2.1": "Requires More Libs 1.0.7+\nAdded Polish Patchouli book, still beta",
 		"1.2.0": "Requires More Libs 1.0.7+\nAdded Patchouli support! You don't require it, but I recommend installing - https://minecraft.curseforge.com/projects/patchouli",
 		"1.1.2": "Requires More Libs 1.0.7+\nAdded Lunette! To zoom you must sneak on ground",

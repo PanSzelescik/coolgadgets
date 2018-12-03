@@ -5,7 +5,7 @@
 	"pages": [
 		{
 			"type": "spotlight",
-			"text": "This is $(item)Lunette$(). You can zoom if you sneaking. You can change scale of zoom using scroll on your mouse.",
+			"text": "This is $(item)Lunette$(). You can zoom objects in world if you sneaking. You can change scale of zoom using scroll on your mouse.",
 			"item": "coolgadgets:lunette",
 			"link_recipe": true
 		},

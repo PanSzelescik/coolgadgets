@@ -1,5 +1,9 @@
 # Cool Gadgets Changelog
 
+### 1.12.2-1.2.2
+- Requires More Libs 1.0.8+
+- Patchouli book works cool
+
 ### 1.12.2-1.2.1
 - Requires More Libs 1.0.7+
 - Added Polish Patchouli book, still beta
