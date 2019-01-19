@@ -114,7 +114,7 @@ dependencies {
 	compile "com.github.mcjty:mcjtylib:${version_mcjtylib}"
 	compile "com.mod-buildcraft:buildcraft-api:${version_buildcraft}"
 	compile "de.ellpeck.actuallyadditions:ActuallyAdditions-unstable:${version_actuallyadditions}:dev"
-	compile "hammer-core:HammerCore-${version_hammercore}:release:deobf"
+	//compile "hammer-core:HammerCore-${version_hammercore}:release:deobf"
 	compile "li.cil.oc:OpenComputers:MC${version_opencomputers}:api"
 	compile "mekanism:Mekanism:${version_mekanism}:api"
 	compile "mrtjp:ProjectRed:${version_projectred}:deobf"

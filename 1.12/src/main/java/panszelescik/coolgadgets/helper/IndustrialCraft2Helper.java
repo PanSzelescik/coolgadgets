@@ -10,10 +10,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class IndustrialCraft2Helper {
-	
-	public static EnumActionResult wrenchBlock(EntityPlayer player, World world, BlockPos pos, EnumFacing side) {
-		ItemToolWrench.wrenchBlock(world, pos, side, player, true);
-		IC2.audioManager.playOnce(player, PositionSpec.Hand, "Tools/wrench.ogg", true, IC2.audioManager.getDefaultVolume());
-		return EnumActionResult.SUCCESS;
-	}
+
+    public static EnumActionResult wrenchBlock(EntityPlayer player, World world, BlockPos pos, EnumFacing side) {
+        ItemToolWrench.wrenchBlock(world, pos, side, player, true);
+        IC2.audioManager.playOnce(player, PositionSpec.Hand, "Tools/wrench.ogg", true, IC2.audioManager.getDefaultVolume());
+        return EnumActionResult.SUCCESS;
+    }
 }

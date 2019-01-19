@@ -1,21 +1,18 @@
 package panszelescik.coolgadgets.items;
 
-import static panszelescik.coolgadgets.CoolGadgets.*;
+import panszelescik.coolgadgets.CoolGadgets;
+import panszelescik.morelibs.register.Register;
+import panszelescik.morelibs.register.Register.RegisterItem;
 
-import net.minecraft.item.Item;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-@EventBusSubscriber(modid = MODID)
+@Register(modid = CoolGadgets.MODID)
 public class ModItems {
-	
-	public static final ItemCalculator calculator = new ItemCalculator();
-	public static final ItemLunette lunette = new ItemLunette();
-	public static final ItemSuperWrench superWrench = new ItemSuperWrench();
-	
-	@SubscribeEvent
-	public static void registerRecipes(RegistryEvent.Register<Item> e) {
-		e.getRegistry().registerAll(calculator, lunette, superWrench);
-	}
+
+    @RegisterItem(registryName = "calculator")
+    public static ItemCalculator calculator;
+
+    @RegisterItem(registryName = "lunette")
+    public static ItemLunette lunette;
+
+    @RegisterItem(registryName = "superwrench")
+    public static ItemSuperWrench superWrench;
 }

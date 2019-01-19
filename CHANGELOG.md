@@ -1,5 +1,11 @@
 # Cool Gadgets Changelog
 
+### 1.12.2-1.3.0
+- Requires More Libs 1.2.0+
+- Use easy register system
+- Cleanups
+- Refactors
+
 ### 1.12.2-1.2.2
 - Requires More Libs 1.0.8+
 - Patchouli book works cool

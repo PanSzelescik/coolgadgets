@@ -1,7 +1,5 @@
 package panszelescik.coolgadgets.helper;
 
-import javax.annotation.Nonnull;
-
 import blusunrize.immersiveengineering.api.MultiblockHandler;
 import blusunrize.immersiveengineering.common.blocks.IEBlockInterfaces.IConfigurableSides;
 import blusunrize.immersiveengineering.common.blocks.IEBlockInterfaces.IDirectionalTile;
@@ -18,30 +16,32 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+
 public class ImmersiveEngineeringHelper {
-	
-	@Nonnull
-	public static EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, IBlockState state, ItemStack stack) {
-		for (MultiblockHandler.IMultiblock mb : MultiblockHandler.getMultiblocks()) {
-			if (mb.isBlockTrigger(state)) {
-				if (MultiblockHandler.postMultiblockFormationEvent(player, mb, pos, stack).isCanceled()) {
-					continue;
-				}
-				if (mb.createStructure(world, pos, side, player)) {
-					if (player instanceof EntityPlayerMP) {
-						IEAdvancements.TRIGGER_MULTIBLOCK.trigger((EntityPlayerMP) player, mb, stack);
-					}
-					return EnumActionResult.SUCCESS;
-				}
-			}
-		}
-		return EnumActionResult.PASS;
-	}
-	
-	@Nonnull
-	public static EnumActionResult onItemUse(World world, BlockPos pos, EnumFacing side, TileEntity tile) {
-		if (!(tile instanceof IDirectionalTile) &&! (tile instanceof IHammerInteraction) &&! (tile instanceof IConfigurableSides))
-			return RotationUtil.rotateBlock(world, pos, side) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
-		return EnumActionResult.PASS;
-	}
+
+    @Nonnull
+    public static EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, IBlockState state, ItemStack stack) {
+        for (MultiblockHandler.IMultiblock mb : MultiblockHandler.getMultiblocks()) {
+            if (mb.isBlockTrigger(state)) {
+                if (MultiblockHandler.postMultiblockFormationEvent(player, mb, pos, stack).isCanceled()) {
+                    continue;
+                }
+                if (mb.createStructure(world, pos, side, player)) {
+                    if (player instanceof EntityPlayerMP) {
+                        IEAdvancements.TRIGGER_MULTIBLOCK.trigger((EntityPlayerMP) player, mb, stack);
+                    }
+                    return EnumActionResult.SUCCESS;
+                }
+            }
+        }
+        return EnumActionResult.PASS;
+    }
+
+    @Nonnull
+    public static EnumActionResult onItemUse(World world, BlockPos pos, EnumFacing side, TileEntity tile) {
+        if (!(tile instanceof IDirectionalTile) && !(tile instanceof IHammerInteraction) && !(tile instanceof IConfigurableSides))
+            return RotationUtil.rotateBlock(world, pos, side) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
+        return EnumActionResult.PASS;
+    }
 }
