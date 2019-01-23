@@ -9,8 +9,6 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
@@ -46,6 +44,9 @@ import vazkii.botania.common.network.PacketHandler;
 import javax.annotation.Nonnull;
 import java.awt.*;
 import java.lang.reflect.Field;
+import java.util.Collections;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 public class BotaniaHelper {
 
@@ -166,37 +167,58 @@ public class BotaniaHelper {
 
     @SubscribeEvent
     public static void playerInteract(PlayerInteractEvent.EntityInteract event) {
-        Item item = event.getEntityPlayer().getHeldItem(event.getHand()).getItem();
+        EnumHand hand = event.getHand();
+        World world = event.getWorld();
         EntityPlayer player = event.getEntityPlayer();
-        if (player.isSneaking() && event.getTarget() instanceof EntitySpark && item instanceof ItemSuperWrench) {
-            EntitySpark entity = (EntitySpark) event.getTarget();
-            CoolGadgets.logger.error("sneaking, entityspark, superwrench");
-            EnumHand hand = event.getHand();
-            World world = event.getWorld();
-            ItemStack stack = player.getHeldItem(hand);
-            if (!entity.isDead && !stack.isEmpty()) {
-                if (world.isRemote) {
-                    boolean valid = stack.getItem() == ModItems.twigWand || stack.getItem() == ModItems.sparkUpgrade
-                            || stack.getItem() == ModItems.phantomInk;
-                    if (valid)
+        ItemStack stack = player.getHeldItem(hand);
+        Item item = stack.getItem();
+        if (player.isSneaking() && item instanceof ItemSuperWrench) {
+            if (event.getTarget() instanceof EntitySpark) {
+                EntitySpark entity = (EntitySpark) event.getTarget();
+                if (!entity.isDead) {
+                    if (world.isRemote) {
                         player.swingArm(hand);
-                    return;
-                }
-
-                SparkUpgradeType upgrade = entity.getUpgrade();
-                if (player.isSneaking()) {
-                    if (upgrade != SparkUpgradeType.NONE) {
-                        entity.entityDropItem(new ItemStack(ModItems.sparkUpgrade, 1, upgrade.ordinal() - 1), 0F);
-                        entity.setUpgrade(SparkUpgradeType.NONE);
-
-                        //transfers.clear();
-                        //removeTransferants = 2;
-                    } else dropAndKill(entity);
-                    return;
-                } else {
-                    for (ISparkEntity spark : SparkHelper.getSparksAround(world, entity.posX, entity.posY + (entity.height / 2.0), entity.posZ))
-                        entity.particleBeam(player, entity, (Entity) spark);
-                    return;
+                        return;
+                    }
+                    SparkUpgradeType upgrade = entity.getUpgrade();
+                    if (player.isSneaking()) {
+                        if (upgrade != SparkUpgradeType.NONE) {
+                            entity.entityDropItem(new ItemStack(ModItems.sparkUpgrade, 1, upgrade.ordinal() - 1), 0F);
+                            entity.setUpgrade(SparkUpgradeType.NONE);
+                            try {
+                                CoolGadgets.logger.error("Trying getting transfers");
+                                Field transfers = EntitySpark.class.getDeclaredField("transfers");
+                                CoolGadgets.logger.error("Trying setting accesible");
+                                transfers.setAccessible(true);
+                                CoolGadgets.logger.error("Trying setting");
+                                Set<ISparkEntity> newTransfers = Collections.newSetFromMap(new WeakHashMap<>());
+                                newTransfers.clear();
+                                transfers.set(entity, newTransfers);
+                            } catch (NoSuchFieldException
+                                    | SecurityException
+                                    | IllegalArgumentException
+                                    | IllegalAccessException e) {
+                                e.printStackTrace();
+                            }
+                            try {
+                                CoolGadgets.logger.error("Trying getting removeTransferants");
+                                Field removeTransferants = EntitySpark.class.getDeclaredField("removeTransferants");
+                                CoolGadgets.logger.error("Trying setting accesible");
+                                removeTransferants.setAccessible(true);
+                                CoolGadgets.logger.error("Trying setting");
+                                removeTransferants.setInt(entity, 2);
+                            } catch (NoSuchFieldException
+                                    | SecurityException
+                                    | IllegalArgumentException
+                                    | IllegalAccessException e) {
+                                e.printStackTrace();
+                            }
+                        } else
+                            dropAndKill(entity);
+                    } else {
+                        for (ISparkEntity spark : SparkHelper.getSparksAround(world, entity.posX, entity.posY + (entity.height / 2.0), entity.posZ))
+                            entity.particleBeam(player, entity, (Entity) spark);
+                    }
                 }
             }
         }
@@ -205,7 +227,7 @@ public class BotaniaHelper {
     private static void dropAndKill(EntitySpark entity) {
         SparkUpgradeType upgrade = entity.getUpgrade();
         entity.entityDropItem(new ItemStack(ModItems.spark), 0F);
-        if(upgrade !=  SparkUpgradeType.NONE)
+        if (upgrade != SparkUpgradeType.NONE)
             entity.entityDropItem(new ItemStack(ModItems.sparkUpgrade, 1, upgrade.ordinal() - 1), 0F);
         entity.setDead();
     }
