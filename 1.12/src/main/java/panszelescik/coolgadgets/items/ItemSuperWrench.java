@@ -19,6 +19,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -47,6 +48,7 @@ import panszelescik.morelibs.api.BlockHelper;
 import panszelescik.morelibs.api.Helper;
 import panszelescik.morelibs.api.ServerHelper;
 import reborncore.api.IToolHandler;
+import vazkii.botania.api.wand.ICoordBoundItem;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -54,6 +56,7 @@ import java.util.List;
 
 @InterfaceList({
         @Interface(iface = "appeng.api.implementations.items.IAEWrench", modid = "appliedenergistics2"),
+        @Interface(iface = "vazkii.botania.api.wand.ICoordBoundItem", modid = "botania"),
         @Interface(iface = "buildcraft.api.tools.IToolWrench", modid = "buildcraftcore"),
         @Interface(iface = "cofh.api.item.IToolHammer", modid = "cofhcore"),
         @Interface(iface = "com.brandon3055.draconicevolution.api.ICrystalBinder", modid = "draconicevolution"),
@@ -68,7 +71,7 @@ import java.util.List;
         @Interface(iface = "mrtjp.projectred.api.IScrewdriver", modid = "projectred-core"),
         @Interface(iface = "reborncore.api.IToolHandler", modid = "reborncore")
 })
-public class ItemSuperWrench extends Item implements IAEWrench, IToolWrench, IToolHammer, ICrystalBinder, IConduitControl, crazypants.enderio.api.tool.ITool, IWrench, IWrenchItem, ITool, IMekWrench, Wrench, IScrewdriver, IToolHandler, SmartWrench {
+public class ItemSuperWrench extends Item implements IAEWrench, ICoordBoundItem, IToolWrench, IToolHammer, ICrystalBinder, IConduitControl, crazypants.enderio.api.tool.ITool, IWrench, IWrenchItem, ITool, IMekWrench, Wrench, IScrewdriver, IToolHandler, SmartWrench {
 
     public ItemSuperWrench() {
         setCreativeTab(CoolGadgets.TAB);
@@ -78,6 +81,11 @@ public class ItemSuperWrench extends Item implements IAEWrench, IToolWrench, ITo
 
     @Override
     public boolean doesSneakBypassUse(ItemStack stack, IBlockAccess world, BlockPos pos, EntityPlayer player) {
+        if (Helper.isLoaded("botania")) {
+            if (!BlockHelper.startWith(world.getBlockState(pos).getBlock(), "botania:")) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -117,7 +125,7 @@ public class ItemSuperWrench extends Item implements IAEWrench, IToolWrench, ITo
             world.setBlockState(pos, BlockHelper.rotateVanillaBlock(world, state, pos), 3);
             player.swingArm(hand);
             return ServerHelper.isServerWorld(world) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
-        } else if (!BlockHelper.startWith(block, "factorytech:") && !BlockHelper.startWith(block, "ic2:")) {
+        } else if (!BlockHelper.startWith(block, "botania:") && !BlockHelper.startWith(block, "factorytech:") && !BlockHelper.startWith(block, "ic2:")) {
             if (!player.isSneaking() && block.rotateBlock(world, pos, side)) {
                 player.swingArm(hand);
                 return EnumActionResult.SUCCESS;
@@ -129,6 +137,14 @@ public class ItemSuperWrench extends Item implements IAEWrench, IToolWrench, ITo
             if (BlockHelper.startWith(block, "actuallyadditions:")) {
                 try {
                     return ActuallyAdditionsHelper.onItemUse(player, world, pos, stack, tile);
+                } catch (Exception e) {
+                }
+            }
+        }
+        if (Helper.isLoaded("botania")) {
+            if (BlockHelper.startWith(block, "botania:") || BotaniaHelper.isWandable(block) || BotaniaHelper.isWandBindable(tile) || block == Blocks.LAPIS_BLOCK) {
+                try {
+                    return BotaniaHelper.onItemUse(player, world, pos, hand, side, stack, block);
                 } catch (Exception e) {
                 }
             }
@@ -178,6 +194,7 @@ public class ItemSuperWrench extends Item implements IAEWrench, IToolWrench, ITo
         IBlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
         TileEntity tile = world.getTileEntity(pos);
+        ItemStack stack = player.getHeldItem(hand);
         if (Helper.isLoaded("immersiveengineering")) {
             if (BlockHelper.startWith(block, "immersiveengineering:") || BlockHelper.startWith(block, "immersivepetroleum:") || BlockHelper.startWith(block, "immersivetech:")) {
                 try {
@@ -211,6 +228,19 @@ public class ItemSuperWrench extends Item implements IAEWrench, IToolWrench, ITo
     public boolean canWrench(ItemStack stack, EntityPlayer player, BlockPos pos) {
         player.swingArm(EnumHand.MAIN_HAND);
         return true;
+    }
+
+    /* ICoordBoundItem */
+    @Method(modid = "botania")
+    @Override
+    public BlockPos getBinding(ItemStack stack) {
+        return BotaniaHelper.getBinding(stack);
+    }
+
+    @Method(modid = "botania")
+    @Override
+    public void onUpdate(ItemStack stack, World world, Entity par3Entity, int par4, boolean par5) {
+        BotaniaHelper.onUpdate(stack, world);
     }
 
     /* IToolWrench */
