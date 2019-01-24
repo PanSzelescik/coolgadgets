@@ -16,8 +16,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import panszelescik.coolgadgets.CoolGadgets;
 import panszelescik.coolgadgets.items.ItemSuperWrench;
+import vazkii.botania.api.corporea.ICorporeaSpark;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.mana.spark.ISparkEntity;
 import vazkii.botania.api.mana.spark.SparkHelper;
@@ -35,6 +35,7 @@ import vazkii.botania.common.core.handler.ModSounds;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.core.helper.PlayerHelper;
 import vazkii.botania.common.core.helper.Vector3;
+import vazkii.botania.common.entity.EntityCorporeaSpark;
 import vazkii.botania.common.entity.EntitySpark;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lib.LibMisc;
@@ -44,9 +45,9 @@ import vazkii.botania.common.network.PacketHandler;
 import javax.annotation.Nonnull;
 import java.awt.*;
 import java.lang.reflect.Field;
-import java.util.Collections;
-import java.util.Set;
-import java.util.WeakHashMap;
+import java.lang.reflect.Method;
+import java.util.List;
+import java.util.*;
 
 public class BotaniaHelper {
 
@@ -172,45 +173,32 @@ public class BotaniaHelper {
         EntityPlayer player = event.getEntityPlayer();
         ItemStack stack = player.getHeldItem(hand);
         Item item = stack.getItem();
-        if (player.isSneaking() && item instanceof ItemSuperWrench) {
+        if (item instanceof ItemSuperWrench) {
             if (event.getTarget() instanceof EntitySpark) {
                 EntitySpark entity = (EntitySpark) event.getTarget();
                 if (!entity.isDead) {
                     if (world.isRemote) {
                         player.swingArm(hand);
-                        return;
                     }
-                    SparkUpgradeType upgrade = entity.getUpgrade();
-                    if (player.isSneaking()) {
+                    if (!world.isRemote && player.isSneaking()) {
+                        SparkUpgradeType upgrade = entity.getUpgrade();
                         if (upgrade != SparkUpgradeType.NONE) {
                             entity.entityDropItem(new ItemStack(ModItems.sparkUpgrade, 1, upgrade.ordinal() - 1), 0F);
                             entity.setUpgrade(SparkUpgradeType.NONE);
                             try {
-                                CoolGadgets.logger.error("Trying getting transfers");
                                 Field transfers = EntitySpark.class.getDeclaredField("transfers");
-                                CoolGadgets.logger.error("Trying setting accesible");
                                 transfers.setAccessible(true);
-                                CoolGadgets.logger.error("Trying setting");
                                 Set<ISparkEntity> newTransfers = Collections.newSetFromMap(new WeakHashMap<>());
                                 newTransfers.clear();
                                 transfers.set(entity, newTransfers);
-                            } catch (NoSuchFieldException
-                                    | SecurityException
-                                    | IllegalArgumentException
-                                    | IllegalAccessException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
-                                CoolGadgets.logger.error("Trying getting removeTransferants");
                                 Field removeTransferants = EntitySpark.class.getDeclaredField("removeTransferants");
-                                CoolGadgets.logger.error("Trying setting accesible");
                                 removeTransferants.setAccessible(true);
-                                CoolGadgets.logger.error("Trying setting");
                                 removeTransferants.setInt(entity, 2);
-                            } catch (NoSuchFieldException
-                                    | SecurityException
-                                    | IllegalArgumentException
-                                    | IllegalAccessException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         } else
@@ -220,24 +208,56 @@ public class BotaniaHelper {
                             entity.particleBeam(player, entity, (Entity) spark);
                     }
                 }
+            } else if (event.getTarget() instanceof EntityCorporeaSpark) {
+                EntityCorporeaSpark entity = (EntityCorporeaSpark) event.getTarget();
+                if (!entity.isDead && !stack.isEmpty()) {
+                    if (world.isRemote) {
+                        player.swingArm(hand);
+                    }
+                    if (!world.isRemote) {
+                        if (player.isSneaking()) {
+                            dropAndKill(entity);
+                            if (entity.isMaster()) {
+                                try {
+                                    Method restartNetwork = EntityCorporeaSpark.class.getDeclaredMethod("restartNetwork");
+                                    restartNetwork.setAccessible(true);
+                                    restartNetwork.invoke(entity);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        } else {
+                            try {
+                                Field masterr = EntityCorporeaSpark.class.getDeclaredField("master");
+                                masterr.setAccessible(true);
+
+                                Method displayRelatives = EntityCorporeaSpark.class.getDeclaredMethod("displayRelatives", EntityPlayer.class, List.class, ICorporeaSpark.class);
+                                displayRelatives.setAccessible(true);
+                                displayRelatives.invoke(null, player, new ArrayList<>(), masterr.get(entity));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
             }
         }
     }
-
-    private static void dropAndKill(EntitySpark entity) {
-        SparkUpgradeType upgrade = entity.getUpgrade();
-        entity.entityDropItem(new ItemStack(ModItems.spark), 0F);
-        if (upgrade != SparkUpgradeType.NONE)
-            entity.entityDropItem(new ItemStack(ModItems.sparkUpgrade, 1, upgrade.ordinal() - 1), 0F);
-        entity.setDead();
-    }
-
 
     public static void onUpdate(ItemStack par1ItemStack, World world) {
         BlockPos coords = getBoundTile(par1ItemStack);
         TileEntity tile = world.getTileEntity(coords);
         if (tile == null || !(isWandBindable(tile)))
             setBoundTile(par1ItemStack, UNBOUND_POS);
+    }
+
+    //Mana Spark
+    private static void dropAndKill(EntitySpark spark) {
+        SparkUpgradeType upgrade = spark.getUpgrade();
+        spark.entityDropItem(new ItemStack(ModItems.spark), 0F);
+        if (upgrade != SparkUpgradeType.NONE)
+            spark.entityDropItem(new ItemStack(ModItems.sparkUpgrade, 1, upgrade.ordinal() - 1), 0F);
+        spark.setDead();
     }
 
     private static void doParticleBeam(World world, Vector3 orig, Vector3 end) {
@@ -263,6 +283,12 @@ public class BotaniaHelper {
             Botania.proxy.setSparkleFXNoClip(false);
             currentPos = currentPos.add(movement);
         }
+    }
+
+    //Corporea Spark
+    private static void dropAndKill(EntityCorporeaSpark spark) {
+        spark.entityDropItem(new ItemStack(ModItems.corporeaSpark, 1, spark.isMaster() ? 1 : 0), 0F);
+        spark.setDead();
     }
 
     private static void setBoundTile(ItemStack stack, BlockPos pos) {
