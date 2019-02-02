@@ -16,6 +16,15 @@
 	]
 },
 {
+	"name": "CRAFTING",
+	"ingredient": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "workbench"
+		}
+	]
+},
+{
 	"name": "DIAMOND",
 	"ingredient": [
 		{
@@ -43,6 +52,23 @@
 		{
 			"type": "forge:ore_dict",
 			"ore": "ingotIron"
+		}
+	]
+},
+{
+	"name": "PLANKS",
+	"ingredient": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "plankWood"
+		}
+	]
+},
+{
+	"name": "PRESSURE_PLATE",
+	"ingredient": [
+		{
+			"item": "minecraft:wooden_pressure_plate"
 		}
 	]
 },

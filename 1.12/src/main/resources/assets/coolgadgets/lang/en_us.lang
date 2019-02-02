@@ -9,6 +9,7 @@ item.superwrench.tooltip=Rotates blocks and dismantles machines!
 
 item.coolgadgets.book.name=Book of Gadgets
 item.calculator.name=Calculator
+item.crafting.name=Crafting Item
 item.lunette.name=Lunette
 item.superwrench.name=Super Wrench
 

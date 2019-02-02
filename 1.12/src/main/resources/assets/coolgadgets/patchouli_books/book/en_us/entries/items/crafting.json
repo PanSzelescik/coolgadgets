@@ -1,0 +1,18 @@
+{
+	"name": "Crafting Item",
+	"icon": "coolgadgets:crafting",
+	"category": "items",
+	"pages": [
+		{
+			"type": "spotlight",
+			"text": "This is $(item)Crafting Item$(). With it, you can have a Crafting Table with you in your inventory.",
+			"item": "coolgadgets:crafting",
+			"link_recipe": true
+		},
+		{
+			"type": "crafting",
+			"text": "Creating $(item)Crafting Item$().",
+			"recipe": "coolgadgets:crafting"
+		}
+	]
+}

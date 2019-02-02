@@ -5,6 +5,7 @@
 		"1.12.2-recommended": "1.4.0"
 	},
 	"1.12.2": {
+		"1.4.1": "Requires More Libs 1.2.0+\nAdded Crafting Item",
 		"1.4.0": "Requires More Libs 1.2.0+\nAdded Wand Of The Forest support from Botania",
 		"1.3.0": "Requires More Libs 1.2.0+\nUse easy register system\nCleanups\nRefactors",
 		"1.2.2": "Requires More Libs 1.0.8+\nPatchouli book works cool",

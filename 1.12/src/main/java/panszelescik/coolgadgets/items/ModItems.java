@@ -10,6 +10,9 @@ public class ModItems {
     @RegisterItem(registryName = "calculator")
     public static ItemCalculator calculator;
 
+    @RegisterItem(registryName = "crafting")
+    public static ItemCrafting crafting_item;
+
     @RegisterItem(registryName = "lunette")
     public static ItemLunette lunette;
 

@@ -1,0 +1,18 @@
+{
+	"name": "Przedmiot rzemieślniczy",
+	"icon": "coolgadgets:crafting",
+	"category": "items",
+	"pages": [
+		{
+			"type": "spotlight",
+			"text": "To jest $(item)Przedmiot rzemieślniczy$(). Dzięki niemu możesz mieć ze sobą Stół rzemieślniczy w ekwipunku.",
+			"item": "coolgadgets:crafting",
+			"link_recipe": true
+		},
+		{
+			"type": "crafting",
+			"text": "Tworzenie $(item)Przedmiotu rzemieślniczego$().",
+			"recipe": "coolgadgets:crafting"
+		}
+	]
+}
