@@ -1,5 +1,9 @@
 # Cool Gadgets Changelog
 
+### 1.12.2-1.4.0
+- Requires More Libs 1.2.0+
+- Added Wand Of The Forest support from Botania
+
 ### 1.12.2-1.3.0
 - Requires More Libs 1.2.0+
 - Use easy register system

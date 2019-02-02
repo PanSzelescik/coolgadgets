@@ -41,6 +41,4 @@ public class CoolGadgets {
             MinecraftForge.EVENT_BUS.register(BotaniaClientHelper.class);
         }
     }
-
-
 }

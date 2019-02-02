@@ -109,7 +109,7 @@ dependencies {
 	compile "blusunrize:ImmersiveEngineering:${version_immersiveengineering}:deobf"
 	compile "cofh:CoFHCore:${version_cofhcore}:deobf"
 	compile "com.brandon3055.draconicevolution:Draconic-Evolution:${version_draconicevolution}:deobf"
-	deobfCompile "com.enderio.core:EnderCore:1.12.2-0.5.43"
+	deobfCompile "com.enderio.core:EnderCore:1.12.2-0.5.45"
 	compile "com.enderio:EnderIO:${version_enderio}:api"
 	compile "com.github.mcjty:mcjtylib:${version_mcjtylib}"
 	compile "com.mod-buildcraft:buildcraft-api:${version_buildcraft}"
