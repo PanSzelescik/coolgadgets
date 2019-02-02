@@ -11,7 +11,7 @@ public class ModItems {
     public static ItemCalculator calculator;
 
     @RegisterItem(registryName = "crafting")
-    public static ItemCrafting crafting_item;
+    public static ItemCrafting crafting;
 
     @RegisterItem(registryName = "lunette")
     public static ItemLunette lunette;
