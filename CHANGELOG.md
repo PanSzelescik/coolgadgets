@@ -3,6 +3,7 @@
 ### 1.12.2-1.4.1
 - Requires More Libs 1.2.0+
 - Added Crafting Item
+- Added Assembler support from Environmental Tech
 
 ### 1.12.2-1.4.0
 - Requires More Libs 1.2.0+

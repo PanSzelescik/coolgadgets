@@ -109,6 +109,17 @@ public class ItemSuperWrench extends Item implements IAEWrench, ICoordBoundItem,
         }
     }
 
+    @Override
+    public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, EntityPlayer player) {
+        if (Helper.isLoaded("valkyrielib")) {
+            Block block = player.getEntityWorld().getBlockState(pos).getBlock();
+            if (BlockHelper.startWith(block, "valkyrielib:") || BlockHelper.startWith(block, "environmentaltech:") || BlockHelper.startWith(block, "etlunar:")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Nonnull
     @Override
     public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
