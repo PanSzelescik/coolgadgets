@@ -133,6 +133,7 @@ dependencies {
 	compileOnly "vazkii.patchouli:Patchouli:${version_patchouli}"
 	
 	runtime "mezz.jei:jei_${version_jei}"
+	runtime "mcjty.theoneprobe:TheOneProbe-${version_theoneprobe}"
 }
 
 processResources {
