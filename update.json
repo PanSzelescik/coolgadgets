@@ -1,8 +1,8 @@
 {
 	"homepage": "https://minecraft.curseforge.com/projects/coolgadgets/files",
 	"promos": {
-		"1.12.2-latest": "1.4.0",
-		"1.12.2-recommended": "1.4.0"
+		"1.12.2-latest": "1.4.1",
+		"1.12.2-recommended": "1.4.1"
 	},
 	"1.12.2": {
 		"1.4.1": "Requires More Libs 1.2.0+\nAdded Crafting Item\nAdded Assembler support from Environmental Tech",
