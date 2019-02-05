@@ -1,5 +1,10 @@
 # Cool Gadgets Changelog
 
+### 1.12.2-1.4.2
+- Requires More Libs 1.2.2+
+- Fixed opening GUI
+- Use new helpers
+
 ### 1.12.2-1.4.1
 - Requires More Libs 1.2.0+
 - Added Crafting Item

@@ -106,7 +106,6 @@ dependencies {
 	compileOnly "appeng:appliedenergistics2:${version_appliedenergistics2}:api"
 	compileOnly "blusunrize:ImmersiveEngineering:${version_immersiveengineering}:deobf"
 	compileOnly "cofh:CoFHCore:${version_cofhcore}:deobf"
-	compileOnly "com.azanor.baubles:Baubles:${version_baubles}:deobf"
 	compileOnly "com.brandon3055.draconicevolution:Draconic-Evolution:${version_draconicevolution}:deobf"
 	deobfProvided "com.enderio.core:EnderCore:${version_endercore}"
 	compileOnly "com.enderio:EnderIO:${version_enderio}:api"
