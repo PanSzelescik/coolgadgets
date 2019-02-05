@@ -17,6 +17,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import panszelescik.coolgadgets.items.ItemSuperWrench;
+import panszelescik.morelibs.api.FieldHelper;
+import panszelescik.morelibs.api.MethodHelper;
 import vazkii.botania.api.corporea.ICorporeaSpark;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.mana.spark.ISparkEntity;
@@ -185,22 +187,10 @@ public class BotaniaHelper {
                         if (upgrade != SparkUpgradeType.NONE) {
                             entity.entityDropItem(new ItemStack(ModItems.sparkUpgrade, 1, upgrade.ordinal() - 1), 0F);
                             entity.setUpgrade(SparkUpgradeType.NONE);
-                            try {
-                                Field transfers = EntitySpark.class.getDeclaredField("transfers");
-                                transfers.setAccessible(true);
-                                Set<ISparkEntity> newTransfers = Collections.newSetFromMap(new WeakHashMap<>());
-                                newTransfers.clear();
-                                transfers.set(entity, newTransfers);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            try {
-                                Field removeTransferants = EntitySpark.class.getDeclaredField("removeTransferants");
-                                removeTransferants.setAccessible(true);
-                                removeTransferants.setInt(entity, 2);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                            Set<ISparkEntity> transfers = Collections.newSetFromMap(new WeakHashMap<>());
+                            transfers.clear();
+                            FieldHelper.setField(EntitySpark.class, "transfers", entity, transfers);
+                            FieldHelper.setField(EntitySpark.class, "removeTransferants", entity, 2);
                         } else
                             dropAndKill(entity);
                     } else {
@@ -218,22 +208,14 @@ public class BotaniaHelper {
                         if (player.isSneaking()) {
                             dropAndKill(entity);
                             if (entity.isMaster()) {
-                                try {
-                                    Method restartNetwork = EntityCorporeaSpark.class.getDeclaredMethod("restartNetwork");
-                                    restartNetwork.setAccessible(true);
-                                    restartNetwork.invoke(entity);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+                                MethodHelper.invoke(EntityCorporeaSpark.class, "restartNetwork", entity);
                             }
                         } else {
                             try {
-                                Field masterr = EntityCorporeaSpark.class.getDeclaredField("master");
-                                masterr.setAccessible(true);
+                                Field masterr = FieldHelper.getField(EntityCorporeaSpark.class, "master");
+                                Method displayRelatives = MethodHelper.getMethod(EntityCorporeaSpark.class, "displayRelatives", EntityPlayer.class, List.class, ICorporeaSpark.class);
 
-                                Method displayRelatives = EntityCorporeaSpark.class.getDeclaredMethod("displayRelatives", EntityPlayer.class, List.class, ICorporeaSpark.class);
-                                displayRelatives.setAccessible(true);
-                                displayRelatives.invoke(null, player, new ArrayList<>(), masterr.get(entity));
+                                MethodHelper.invoke(displayRelatives, null, player, new ArrayList<>(), masterr.get(entity));
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
