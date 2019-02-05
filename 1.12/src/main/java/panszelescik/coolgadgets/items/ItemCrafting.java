@@ -22,9 +22,7 @@ public class ItemCrafting extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         player.addStat(StatList.CRAFTING_TABLE_INTERACTION);
-        if (!world.isRemote) {
-            player.openGui(CoolGadgets.instance, ModGuis.CRAFTING, world, (int) player.posX, (int) player.posY, (int) player.posZ);
-        }
+        player.openGui(CoolGadgets.instance, ModGuis.CRAFTING, world, (int) player.posX, (int) player.posY, (int) player.posZ);
         return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
     }
 

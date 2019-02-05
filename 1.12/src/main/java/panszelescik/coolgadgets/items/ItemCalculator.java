@@ -29,9 +29,7 @@ public class ItemCalculator extends Item {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand handIn) {
-        if (!world.isRemote) {
-            player.openGui(CoolGadgets.instance, ModGuis.CALCULATOR, world, 0, 0, HandHelper.encrypt(handIn));
-        }
+        player.openGui(CoolGadgets.instance, ModGuis.CALCULATOR, world, 0, 0, HandHelper.encrypt(handIn));
         return new ActionResult<>(EnumActionResult.PASS, player.getHeldItem(handIn));
     }
 
