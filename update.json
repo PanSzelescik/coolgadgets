@@ -1,10 +1,11 @@
 {
 	"homepage": "https://minecraft.curseforge.com/projects/coolgadgets/files",
 	"promos": {
-		"1.12.2-latest": "1.4.2",
-		"1.12.2-recommended": "1.4.2"
+		"1.12.2-latest": "1.4.3",
+		"1.12.2-recommended": "1.4.3"
 	},
 	"1.12.2": {
+		"1.4.3": "Requires More Libs 1.2.2+\nFixed server crash",
 		"1.4.2": "Requires More Libs 1.2.2+\nFixed opening GUI\nUse new helpers",
 		"1.4.1": "Requires More Libs 1.2.0+\nAdded Crafting Item\nAdded Assembler support from Environmental Tech",
 		"1.4.0": "Requires More Libs 1.2.0+\nAdded Wand Of The Forest support from Botania",
