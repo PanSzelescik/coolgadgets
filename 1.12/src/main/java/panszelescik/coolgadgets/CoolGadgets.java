@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import panszelescik.coolgadgets.helper.BotaniaClientHelper;
 import panszelescik.coolgadgets.helper.BotaniaHelper;
 import panszelescik.coolgadgets.helper.CraftingHelper;
 import panszelescik.coolgadgets.helper.EnvironmentalTechHelper;
@@ -48,7 +47,6 @@ public class CoolGadgets {
         proxy.init();
         if (Helper.isLoaded("botania")) {
             MinecraftForge.EVENT_BUS.register(BotaniaHelper.class);
-            MinecraftForge.EVENT_BUS.register(BotaniaClientHelper.class);
         }
         if (Helper.isLoaded("valkyrielib")) {
             MinecraftForge.EVENT_BUS.register(EnvironmentalTechHelper.class);
