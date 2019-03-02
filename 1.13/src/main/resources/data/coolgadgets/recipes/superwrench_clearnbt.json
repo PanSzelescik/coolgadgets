@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "coolgadgets:superwrench"
+		}
+	],
+	"result": {
+		"item": "coolgadgets:superwrench"
+	}
+}

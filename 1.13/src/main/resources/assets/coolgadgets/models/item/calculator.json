@@ -1,0 +1,8 @@
+{
+	"forge_marker": 1,
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "coolgadgets:calculator"
+    },
+	"transform": "forge:default-tool"
+}

@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"PPP",
+		"WCW",
+		"WWW"
+	],
+	"key": {
+		"C": {
+			"constant": "coolgadgets:crafting"
+		},
+		"P": {
+			"constant": "coolgadgets:pressure_plate"
+		},
+		"W": {
+			"constant": "coolgadgets:planks"
+		}
+	},
+	"result": {
+		"item": "coolgadgets:crafting"
+	}
+}

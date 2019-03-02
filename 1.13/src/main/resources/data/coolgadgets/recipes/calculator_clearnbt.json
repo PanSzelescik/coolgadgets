@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "coolgadgets:calculator"
+		}
+	],
+	"result": {
+		"item": "coolgadgets:calculator"
+	}
+}

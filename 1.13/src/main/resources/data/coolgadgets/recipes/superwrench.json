@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" I ",
+		" DI",
+		"D  "
+	],
+	"key": {
+		"I": {
+			"constant": "coolgadgets:iron"
+		},
+		"D": {
+			"constant": "coolgadgets:diamond"
+		}
+	},
+	"result": {
+		"item": "coolgadgets:superwrench"
+	}
+}
