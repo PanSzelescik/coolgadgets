@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "minecraft:blocks/crafting_table_top"
-    },
-	"transform": "forge:default-tool"
-}
