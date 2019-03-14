@@ -115,7 +115,7 @@ dependencies {
 	deobfProvided "extra-utilities:extrautils2:${version_extrautilities}"
 	deobfProvided "factory-tech:FactoryTech:${version_factorytech}"
 	deobfProvided "fastworkbench:FastWorkbench:${version_fastworkbench}"
-	deobfProvided "hammer-core:HammerCore:${version_hammercore}"
+	deobfProvided "hammer-lib:HammerCore:${version_hammercore}"
 	compileOnly "li.cil.oc:OpenComputers:MC${version_opencomputers}:api"
 	compileOnly "mekanism:Mekanism:${version_mekanism}:api"
 	deobfProvided "mezz.jei:jei_${version_jei}:api"
