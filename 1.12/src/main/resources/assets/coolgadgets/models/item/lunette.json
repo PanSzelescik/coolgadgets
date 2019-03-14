@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "coolgadgets:lunette"
-    },
-	"transform": "forge:default-tool"
-}
